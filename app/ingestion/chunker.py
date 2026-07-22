@@ -25,8 +25,8 @@ def chunk_documents(pages):
     """
 
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=800,
-        chunk_overlap=150,
+        chunk_size=1500,
+        chunk_overlap=300,
         separators=[
             "\n\n",
             "\n",

@@ -71,3 +71,22 @@ class VectorStore:
             collection_name=self.collection_name,
             points=points
         )
+
+    def search(
+        self,
+        query_vector,
+        limit=5
+    ):
+
+        results = self.client.query_points(
+
+            collection_name=self.collection_name,
+
+            query=query_vector,
+
+            limit=limit
+
+        )
+
+
+        return results.points

@@ -1,126 +1,527 @@
 # Enterprise Hybrid RAG Platform 🚀
 
-A production-style **Retrieval-Augmented Generation (RAG)** platform designed to process enterprise documents and enable intelligent question answering using modern LLM application architecture.
+A production-style **Retrieval-Augmented Generation (RAG)** platform designed to process enterprise documents and provide intelligent question answering using modern LLM application architecture.
 
-This project demonstrates a complete enterprise RAG pipeline including document ingestion, preprocessing, hybrid retrieval, reranking, evaluation, and deployment.
+This project implements a complete enterprise RAG pipeline including:
 
-The goal is to build a system similar to real-world internal knowledge assistants used in companies.
+- Document ingestion
+- PDF processing
+- Intelligent chunking
+- Dense vector retrieval
+- Sparse keyword retrieval
+- Hybrid search using Reciprocal Rank Fusion (RRF)
+- Cross-encoder reranking
+- Vector database integration
+- Evaluation framework
+- LLM-based generation pipeline
+
+The goal is to build a system similar to internal enterprise knowledge assistants used for document search, knowledge management, and AI-powered question answering.
 
 ---
 
 # Project Status
 
-## Completed ✅
+## Completed Features ✅
 
-### Milestone 1 — Backend Foundation
-- FastAPI application setup
-- API routing architecture
-- Swagger API documentation
-- Project structure creation
-
-### Milestone 2 — Document Ingestion Pipeline
-- PDF upload API
-- PDF file validation
-- Unique document ID generation
-- Duplicate filename handling
-- PDF storage management
-- Text extraction using PyMuPDF
-
-### Milestone 3 — Document Chunking
-- Recursive text splitting
-- Chunk metadata tracking
-- Page number preservation
-- Chunk ID generation
-
+- Backend API architecture
+- Enterprise document ingestion pipeline
+- PDF extraction
+- Intelligent chunking
+- Embedding generation
+- Vector database integration
+- Dense semantic retrieval
+- BM25 sparse retrieval
+- Hybrid retrieval using Reciprocal Rank Fusion
+- Cross-encoder reranking
+- Retrieval pipeline architecture
 
 ## In Progress 🚧
 
-- Embedding generation
-- Vector database integration
-- Semantic search
-- Hybrid retrieval
-
-
-## Planned Features 🔜
-
-### Document Intelligence
-- OCR for scanned documents
-- Table extraction
-- Image extraction
-- Metadata extraction
-
-
-### Retrieval System
-- Dense vector search
-- Sparse retrieval using BM25
-- Hybrid search
-- Query expansion
-- Cross-encoder reranking
-
-
-### Generation System
-- LLM integration
-- Context-aware prompting
-- Citation generation
-- Streaming responses
-- Conversation memory
-
-
-### Enterprise Features
-- RAG evaluation
-- Observability
-- Cost tracking
-- Authentication
-- Docker deployment
+- LLM generation layer
+- Retrieval evaluation framework
+- RAG evaluation metrics
+- Deployment pipeline
 
 ---
 
-# Architecture Overview
-
-Current pipeline:
+# System Architecture
 
 ```
-                    PDF Document
+                         User Query
 
-                         |
-                         v
+                              |
+                              v
 
-                  FastAPI Upload API
+                    Query Processing Layer
 
-                         |
-                         v
+                              |
+                              v
 
-                 Document Processing
 
-                         |
-                         v
+        +---------------------+---------------------+
 
-                  PDF Text Extraction
-                     (PyMuPDF)
+        |                                           |
 
-                         |
-                         v
+        v                                           v
 
-                  Document Chunking
 
-                         |
-                         v
+ Dense Vector Retrieval                    Sparse Retrieval
 
-              Embedding Generation
-                 (Coming Soon)
+ (Embedding Search)                         (BM25 Search)
 
-                         |
-                         v
 
-                Vector Database
-                 (Coming Soon)
+        |                                           |
 
-                         |
-                         v
+        +---------------------+---------------------+
 
-                 LLM Generation
-                 (Coming Soon)
+                              |
+
+                              v
+
+
+                 Reciprocal Rank Fusion (RRF)
+
+
+                              |
+
+                              v
+
+
+                 Hybrid Candidate Retrieval
+
+
+                              |
+
+                              v
+
+
+                  Cross Encoder Reranking
+
+
+                              |
+
+                              v
+
+
+                    Relevant Context
+
+
+                              |
+
+                              v
+
+
+                       LLM Generation
+
+
+                              |
+
+                              v
+
+
+                       Final Answer
 ```
+
+---
+
+# Milestone 1 — Backend Foundation
+
+Implemented:
+
+- FastAPI backend architecture
+- API routing structure
+- Swagger API documentation
+- Configuration management
+- Modular project organization
+
+Backend follows a scalable service-oriented structure suitable for production AI applications.
+
+---
+
+# Milestone 2 — Enterprise Document Ingestion Pipeline
+
+The ingestion pipeline processes enterprise documents and converts them into searchable knowledge units.
+
+Implemented:
+
+- PDF upload API
+- File validation
+- Unique document ID generation
+- Duplicate filename handling
+- Document storage management
+- Text extraction using PyMuPDF
+
+
+## Pipeline
+
+```
+PDF Document
+
+      |
+      v
+
+FastAPI Upload API
+
+      |
+      v
+
+File Validation
+
+      |
+      v
+
+Document Storage
+
+      |
+      v
+
+PyMuPDF Extraction
+
+      |
+      v
+
+Raw Document Text
+```
+
+---
+
+# Milestone 3 — Intelligent Document Chunking
+
+Large documents are split into smaller semantic units optimized for retrieval.
+
+Implemented:
+
+- Recursive text splitting
+- Chunk metadata tracking
+- Page number preservation
+- Unique chunk ID generation
+
+
+## Chunking Strategy
+
+```
+Chunk Size:
+800 characters
+
+Chunk Overlap:
+150 characters
+```
+
+
+Each chunk stores metadata:
+
+```json
+{
+    "document_id": "uuid",
+    "chunk_id": 12,
+    "page": 5,
+    "text": "document content"
+}
+```
+
+Benefits:
+
+- Reduces LLM context size
+- Improves retrieval accuracy
+- Enables document referencing
+- Preserves source information
+
+---
+
+# Milestone 4 — Embeddings & Vector Database
+
+The system converts document chunks into dense vector representations for semantic retrieval.
+
+Implemented:
+
+- Embedding generation
+- Vector indexing
+- Similarity search
+- Vector database integration
+
+
+## Architecture
+
+```
+Document Chunk
+
+        |
+        v
+
+Embedding Model
+
+        |
+        v
+
+Dense Vector
+
+        |
+        v
+
+Vector Database
+```
+
+
+## Technologies
+
+- Sentence Transformers
+- Qdrant Vector Database
+
+
+Dense retrieval enables searching based on meaning rather than exact keywords.
+
+
+Example:
+
+Query:
+
+```
+"What caused the laboratory accident?"
+```
+
+
+The system can retrieve:
+
+```
+"Failure of the fire suppression system resulted in equipment damage."
+```
+
+even without exact keyword overlap.
+
+---
+
+# Milestone 5 — Hybrid Retrieval System
+
+Implemented a hybrid retrieval pipeline combining:
+
+1. Dense semantic retrieval
+2. Sparse keyword retrieval
+
+
+Hybrid retrieval improves reliability by combining the strengths of both approaches.
+
+---
+
+## Dense Retrieval
+
+Uses:
+
+- Transformer embeddings
+- Vector similarity search
+
+
+Advantages:
+
+- Understands semantic meaning
+- Handles natural language questions
+- Finds conceptually similar documents
+
+
+Example:
+
+```
+Query:
+"vehicle stopped suddenly"
+
+Can retrieve:
+
+"unexpected emergency braking event"
+```
+
+---
+
+## Sparse Retrieval
+
+Uses:
+
+- BM25 ranking algorithm
+
+
+Advantages:
+
+- Strong keyword matching
+- Effective for technical terms
+- Works well with IDs, names, and exact phrases
+
+
+Example:
+
+```
+Query:
+
+"ISO 26262 ASIL-D"
+
+BM25 can prioritize exact technical matches.
+```
+
+---
+
+# Hybrid Retrieval Architecture
+
+```
+                         User Query
+
+                              |
+                              |
+
+              +---------------+---------------+
+
+              |                               |
+
+              v                               v
+
+
+       Dense Retrieval                  BM25 Retrieval
+
+       Vector Search                   Keyword Search
+
+
+              |                               |
+
+              +---------------+---------------+
+
+                              |
+
+                              v
+
+
+                  Reciprocal Rank Fusion
+
+
+                              |
+
+                              v
+
+
+                    Hybrid Ranked Results
+```
+
+---
+
+# Reciprocal Rank Fusion (RRF)
+
+Dense retrieval and BM25 produce ranking results using different scoring systems.
+
+Example:
+
+## Dense Retrieval
+
+```
+Document A → similarity score: 0.72
+
+Document B → similarity score: 0.65
+
+Document C → similarity score: 0.61
+```
+
+
+## BM25 Retrieval
+
+```
+Document B → BM25 score: 12.5
+
+Document A → BM25 score: 9.8
+
+Document D → BM25 score: 7.4
+```
+
+
+These scores cannot be directly combined because they exist on different scales.
+
+Instead, the system combines rankings using Reciprocal Rank Fusion:
+
+```
+RRF Score = Σ 1 / (k + rank)
+```
+
+
+Where:
+
+```
+rank = document position in retrieval list
+
+k = constant controlling rank contribution
+```
+
+
+Benefits:
+
+- Combines semantic understanding from dense retrieval
+- Preserves exact keyword matching from BM25
+- Produces more robust retrieval results
+
+---
+
+# Milestone 6 — Cross Encoder Reranking
+
+After hybrid retrieval, the system improves ranking quality using a Cross Encoder model.
+
+
+Implemented:
+
+- Candidate retrieval
+- Query-document scoring
+- Final relevance ranking
+
+
+## Pipeline
+
+```
+User Query
+
+      |
+
+      v
+
+Hybrid Retriever
+
+      |
+
+      v
+
+Top-K Candidate Documents
+
+      |
+
+      v
+
+Cross Encoder Reranker
+
+      |
+
+      v
+
+Final Ranked Context
+```
+
+
+The retriever optimizes for:
+
+```
+High Recall
+```
+
+The reranker optimizes for:
+
+```
+High Precision
+```
+
+
+The Cross Encoder evaluates:
+
+```
+(query, document)
+```
+
+pairs together and produces a relevance score.
+
+
+Benefits:
+
+- Removes irrelevant chunks
+- Improves context quality
+- Provides better information for LLM generation
 
 ---
 
@@ -143,7 +544,12 @@ enterprise-hybrid-rag/
 │   │
 │   ├── retrieval/
 │   │   ├── embeddings.py
-│   │   └── vectorstore.py
+│   │   ├── vectorstore.py
+│   │   ├── bm25.py
+│   │   ├── hybrid.py
+│   │   └── reranker.py
+│   │
+│   ├── evaluation/
 │   │
 │   ├── main.py
 │   └── config.py
@@ -151,6 +557,8 @@ enterprise-hybrid-rag/
 ├── data/
 │   ├── uploads/
 │   └── processed/
+│
+├── tests/
 │
 ├── Dockerfile
 ├── docker-compose.yml
@@ -177,15 +585,21 @@ enterprise-hybrid-rag/
 - LangChain Text Splitters
 
 
-## Retrieval & AI Stack
-
-Planned:
+## Retrieval Stack
 
 - Sentence Transformers
-- Qdrant Vector Database
-- BM25 Sparse Retrieval
-- Cross Encoder Reranking
-- OpenAI API
+- Qdrant
+- BM25
+- Reciprocal Rank Fusion
+- Cross Encoder Models
+
+
+## AI Stack
+
+- Retrieval-Augmented Generation
+- LLM APIs
+- Prompt Engineering
+- Semantic Search
 
 
 ## Deployment
@@ -194,7 +608,8 @@ Planned:
 
 - Docker
 - Docker Compose
-- Linux deployment
+- Cloud deployment
+- Monitoring
 
 ---
 
@@ -202,11 +617,11 @@ Planned:
 
 ## Health Check
 
-### GET /
+```
+GET /
+```
 
-Checks whether the application is running.
-
-Example response:
+Response:
 
 ```json
 {
@@ -216,139 +631,20 @@ Example response:
 
 ---
 
-## Router Test
-
-### GET /hello
-
-Tests API routing.
-
-Example response:
-
-```json
-{
-    "message": "Upload router works!"
-}
-```
-
----
-
-# PDF Upload API
-
-## POST /upload
-
-Uploads and processes PDF documents.
-
-### Input
-
-Multipart form data:
+## Upload Document
 
 ```
-file: PDF document
+POST /upload
 ```
 
----
 
-## Processing Pipeline
+Uploads and processes enterprise PDF documents.
+
+
+Processing pipeline:
 
 ```
 PDF
-
-↓
-
-File Validation
-
-↓
-
-Unique Filename Generation
-
-↓
-
-File Storage
-
-↓
-
-Text Extraction
-
-↓
-
-Document Chunking
-
-↓
-
-Return Metadata
-```
-
----
-
-## Example Response
-
-```json
-{
-    "document_id": "uuid",
-    "filename": "document.pdf",
-    "stored_as": "uuid_document.pdf",
-    "pages": 10,
-    "total_chunks": 45,
-    "first_chunk": "Extracted document text..."
-}
-```
-
----
-
-# Milestones
-
----
-
-# Milestone 1 — Backend Foundation ✅
-
-## Objective
-
-Create the backend foundation for the RAG system.
-
-## Implemented
-
-- FastAPI application
-- API router structure
-- Swagger documentation
-
-
-## Running the application
-
-```bash
-uvicorn app.main:app --reload
-```
-
-Swagger documentation:
-
-```
-http://127.0.0.1:8000/docs
-```
-
----
-
-# Milestone 2 — PDF Document Ingestion ✅
-
-## Objective
-
-Create a pipeline for accepting enterprise documents.
-
-## Implemented
-
-- PDF upload endpoint
-- File type validation
-- Unique document identifiers
-- File storage
-- Text extraction
-
-
-## Pipeline
-
-```
-PDF
-
-↓
-
-FastAPI Upload
 
 ↓
 
@@ -360,206 +656,45 @@ Storage
 
 ↓
 
-PyMuPDF
+Text Extraction
 
 ↓
 
-Extracted Text
-```
+Chunking
 
----
+↓
 
-# Milestone 3 — Document Chunking ✅
+Embedding Generation
 
-## Objective
+↓
 
-Convert large documents into smaller searchable pieces.
-
-Large documents cannot directly be passed into LLMs because of context window limitations.
-
-Chunking allows:
-
-- Efficient retrieval
-- Lower token usage
-- Better answer accuracy
-
-
-## Implementation
-
-Used:
-
-```
-RecursiveCharacterTextSplitter
+Vector Storage
 ```
 
 
-Configuration:
-
-```
-Chunk Size:
-800 characters
-
-
-Chunk Overlap:
-150 characters
-```
-
-
-## Chunk Metadata
-
-Each chunk contains:
+Example response:
 
 ```json
 {
-    "chunk_id": 0,
-    "page": 1,
-    "text": "document content"
+    "document_id": "uuid",
+    "filename": "document.pdf",
+    "pages": 20,
+    "total_chunks": 120
 }
 ```
 
 ---
 
-# Upcoming Milestones
-
----
-
-# Milestone 4 — Embeddings & Vector Database
-
-Pipeline:
-
-```
-Document Chunks
-
-↓
-
-Embedding Model
-
-↓
-
-Vector Representation
-
-↓
-
-Qdrant Storage
-```
-
-Technologies:
-
-- Sentence Transformers
-- Qdrant
-
-
----
-
-# Milestone 5 — Hybrid Retrieval
-
-Combine:
-
-## Dense Retrieval
-
-Using:
-
-- Vector embeddings
-- Semantic similarity
-
-
-## Sparse Retrieval
-
-Using:
-
-- BM25
-- Keyword matching
-
-
-Architecture:
-
-```
-User Query
-
-      |
-      |
-
-+-------------+
-| Dense Search|
-+-------------+
-
-      +
-
-+-------------+
-| BM25 Search |
-+-------------+
-
-      |
-      v
-
-Hybrid Results
-
-      |
-      v
-
-Reranker
-```
-
----
-
-# Milestone 6 — LLM Generation
-
-Features:
-
-- Context injection
-- Prompt templates
-- Answer generation
-- Citations
-- Streaming responses
-
-
-Pipeline:
-
-```
-Question
-
-↓
-
-Retriever
-
-↓
-
-Relevant Documents
-
-↓
-
-LLM
-
-↓
-
-Final Answer
-```
-
----
-
-# Milestone 7 — Enterprise Features
-
-Planned:
-
-- Conversation memory
-- RAG evaluation
-- Langfuse monitoring
-- Phoenix evaluation
-- Authentication
-- Docker deployment
-- Production deployment
-
----
-
-# Installation
+# Running the Project
 
 ## Create Environment
 
 ```bash
+conda create -n worky python=3.10
+
 conda activate worky
 ```
 
----
 
 ## Install Dependencies
 
@@ -567,21 +702,88 @@ conda activate worky
 pip install -r requirements.txt
 ```
 
----
 
-# Running the Project
-
-Start FastAPI:
+## Start Backend
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-Open Swagger:
+
+Swagger documentation:
 
 ```
 http://127.0.0.1:8000/docs
 ```
+
+---
+
+# Evaluation Framework
+
+Planned evaluation framework for measuring retrieval and generation quality.
+
+## Retrieval Evaluation
+
+Metrics:
+
+- Recall@K
+- Precision@K
+- Mean Reciprocal Rank (MRR)
+- NDCG
+
+
+## RAG Evaluation
+
+Metrics:
+
+- Answer relevance
+- Faithfulness
+- Context relevance
+- Hallucination rate
+
+
+Tools:
+
+- RAGAS
+- Langfuse
+- Phoenix
+
+---
+
+# Future Improvements 🚀
+
+## Document Intelligence
+
+- OCR support
+- Table extraction
+- Image understanding
+- Metadata extraction
+
+
+## Advanced Retrieval
+
+- Parent-child retrieval
+- Metadata filtering
+- Query rewriting
+- Multi-query retrieval
+- Context compression
+
+
+## Generation Layer
+
+- LLM integration
+- Citation generation
+- Streaming responses
+- Conversation memory
+
+
+## Enterprise Features
+
+- Authentication
+- User permissions
+- Monitoring
+- Cost tracking
+- Cloud deployment
 
 ---
 
@@ -590,18 +792,22 @@ http://127.0.0.1:8000/docs
 This project demonstrates:
 
 - Enterprise RAG architecture
-- Document ingestion systems
-- API development
+- Information retrieval systems
+- Hybrid search techniques
 - Vector databases
 - Semantic search
-- Information retrieval
+- Ranking algorithms
+- Cross encoder reranking
 - LLM application development
 - Production AI engineering practices
+
 
 ---
 
 # Author
 
-Rochan Kumar
+## Rochan Kumar
 
 AI / Robotics Engineer
+
+````

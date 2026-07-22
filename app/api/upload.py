@@ -53,13 +53,23 @@ async def upload_pdf(file: UploadFile = File(...)):
     )
 
     chunks = chunk_documents(
-        pages
+        pages,
+        document_id,
+        original_filename
     )
 
     texts = [
-        chunk["text"]
+        f"""
+    Document: {chunk['filename']}
+
+    Page: {chunk['page']}
+
+    Content:
+    {chunk['text']}
+    """
         for chunk in chunks
     ]
+    
     embedding_model = EmbeddingModel()
     embeddings = (
         embedding_model
@@ -71,8 +81,6 @@ async def upload_pdf(file: UploadFile = File(...)):
     vector_store.insert_chunks(
         chunks,
         embeddings,
-        document_id,
-        original_filename
     )
 
     return {

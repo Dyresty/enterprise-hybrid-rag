@@ -15,7 +15,6 @@ class VectorStore:
         )
         self.collection_name = "documents"
 
-
     def create_collection(self):
         collections = (
             self.client
@@ -36,34 +35,35 @@ class VectorStore:
             )
 
     def insert_chunks(
-            self,
-            chunks,
-            embeddings,
-            document_id,
-            filename
+        self,
+        chunks,
+        embeddings
     ):
         points = []
-        for idx, (chunk, vector) in enumerate(
-            zip(chunks, embeddings)
+        for chunk, vector in zip(
+            chunks,
+            embeddings
         ):
             points.append(
                 PointStruct(
                     id=str(
                         uuid.uuid5(
                             uuid.NAMESPACE_DNS,
-                            f"{document_id}_{idx}"
+                            f"{chunk['document_id']}_{chunk['chunk_id']}"
                         )
                     ),
                     vector=vector,
                     payload={
-                        "document_id": document_id,
-                        "filename": filename,
-                        "chunk_id": idx,
-                        "page": chunk.get(
-                            "page",
-                            None
-                        ),
-                        "text": chunk["text"]
+                        "document_id":
+                            chunk["document_id"],
+                        "filename":
+                            chunk["filename"],
+                        "chunk_id":
+                            chunk["chunk_id"],
+                        "page":
+                            chunk["page"],
+                        "text":
+                            chunk["text"]
                     }
                 )
             )
@@ -77,16 +77,9 @@ class VectorStore:
         query_vector,
         limit=5
     ):
-
         results = self.client.query_points(
-
             collection_name=self.collection_name,
-
             query=query_vector,
-
             limit=limit
-
         )
-
-
         return results.points

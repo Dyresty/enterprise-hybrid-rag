@@ -17,14 +17,4 @@ for result in results:
 
     print("----------------")
 
-    print(
-        f"Score: {result['score']}"
-    )
-
-    print(
-        f"Page: {result['page']}"
-    )
-
-    print(
-        f"Text: {result['text']}"
-    )
+    print(result)

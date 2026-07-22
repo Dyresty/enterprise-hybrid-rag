@@ -31,6 +31,7 @@ class Retriever:
                     result.payload["document_id"],
                 "filename":
                     result.payload["filename"],
+                "chunk_id": result.payload["chunk_id"],
                 "page":
                     result.payload["page"],
                 "text":

@@ -4,4 +4,4 @@ qdrant_storage/*
 
 # Python cache
 __pycache__/
-*.pyc
+*.pycgit status

@@ -1,3 +1,7 @@
 data/*
 qdrant_storage/*
 .env
+
+# Python cache
+__pycache__/
+*.pyc

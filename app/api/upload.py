@@ -5,6 +5,7 @@ import uuid
 from fastapi import APIRouter, UploadFile, File, HTTPException
 
 from app.ingestion.parser import extract_pdf_text
+from app.ingestion.chunker import chunk_documents
 
 router = APIRouter()
 
@@ -40,14 +41,19 @@ async def upload_pdf(file: UploadFile = File(...)):
     pages = extract_pdf_text(
         str(save_path)
     )
+    chunks = chunk_documents(
+        pages
+    )
+    print(chunks[:3])
 
     return {
         "document_id": file_id,
         "filename": file.filename,
         "stored_as": filename,
         "pages": len(pages),
-        "preview":
-            pages[0]["text"][:500]
-            if pages
+        "total_chunks": len(chunks),
+        "first_chunk":
+        chunks[0]["text"]
+            if chunks
             else ""
     }

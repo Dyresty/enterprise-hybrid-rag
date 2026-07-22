@@ -44,26 +44,26 @@ class VectorStore:
             chunks,
             embeddings
         ):
+            metadata = chunk["metadata"]
             points.append(
                 PointStruct(
                     id=str(
                         uuid.uuid5(
                             uuid.NAMESPACE_DNS,
-                            f"{chunk['document_id']}_{chunk['chunk_id']}"
+                            f"{metadata['document_id']}_{metadata['chunk_id']}"
                         )
                     ),
                     vector=vector,
                     payload={
-                        "document_id":
-                            chunk["document_id"],
-                        "filename":
-                            chunk["filename"],
-                        "chunk_id":
-                            chunk["chunk_id"],
-                        "page":
-                            chunk["page"],
-                        "text":
-                            chunk["text"]
+                        "document_id": metadata["document_id"],
+                        "parent_id": metadata["parent_id"],
+                        "filename": metadata["filename"],
+                        "chunk_id": metadata["chunk_id"],
+                        "page": metadata["page"],
+                        "section": metadata["section"],
+                        "created_at": metadata["created_at"],
+                        "source_type": metadata["source_type"],
+                        "text": chunk["text"]
                     }
                 )
             )
@@ -83,3 +83,47 @@ class VectorStore:
             limit=limit
         )
         return results.points
+
+
+    def get_all_documents(self):
+
+        documents=[]
+
+
+        points, _ = self.client.scroll(
+            collection_name=self.collection_name,
+            limit=10000
+        )
+
+
+        for point in points:
+
+            documents.append(
+
+                {
+                    "text":
+                        point.payload["text"],
+
+                    "metadata":
+                    {
+                        "document_id":
+                            point.payload["document_id"],
+
+                        "parent_id":
+                            point.payload["parent_id"],
+
+                        "filename":
+                            point.payload["filename"],
+
+                        "chunk_id":
+                            point.payload["chunk_id"],
+
+                        "page":
+                            point.payload["page"]
+                    }
+                }
+
+            )
+
+
+        return documents

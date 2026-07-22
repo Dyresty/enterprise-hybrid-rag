@@ -4,10 +4,7 @@ import uuid
 
 from fastapi import APIRouter, UploadFile, File, HTTPException
 
-from app.ingestion.parser import extract_pdf_text
-from app.ingestion.chunker import chunk_documents
-from app.retrieval.embeddings import EmbeddingModel
-from app.retrieval.vectorstore import VectorStore
+from app.services.ingestion_service import DocumentIngestionService
 
 router = APIRouter()
 
@@ -47,50 +44,27 @@ async def upload_pdf(file: UploadFile = File(...)):
             buffer
         )
 
-    # Extract text
-    pages = extract_pdf_text(
-        str(save_path)
-    )
+    service = DocumentIngestionService()
 
-    chunks = chunk_documents(
-        pages,
+    result = service.ingest_document(
+        str(save_path),
         document_id,
         original_filename
     )
 
-    texts = [
-        f"""
-    Document: {chunk['filename']}
-
-    Page: {chunk['page']}
-
-    Content:
-    {chunk['text']}
-    """
-        for chunk in chunks
-    ]
-    
-    embedding_model = EmbeddingModel()
-    embeddings = (
-        embedding_model
-        .generate_embeddings(texts)
-    )
-
-    vector_store = VectorStore()
-    vector_store.create_collection()
-    vector_store.insert_chunks(
-        chunks,
-        embeddings,
-    )
-
     return {
+
         "document_id": document_id,
+
         "filename": original_filename,
+
         "stored_as": save_path.name,
-        "pages": len(pages),
-        "total_chunks": len(chunks),
+
+        "pages": result["pages"],
+
+        "total_chunks":
+            result["total_chunks"],
+
         "first_chunk":
-        chunks[0]["text"]
-            if chunks
-            else ""
+            result["first_chunk"]
     }

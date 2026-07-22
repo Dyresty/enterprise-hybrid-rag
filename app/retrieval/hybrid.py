@@ -32,49 +32,68 @@ class HybridRetriever:
         query,
         top_k=20
     ):
+
         dense_results = self.dense.search(
             query,
             top_k
         )
+
         sparse_results = self.bm25.search(
             query,
             top_k
         )
+
         combined = {}
-        for rank,item in enumerate(dense_results):
+
+
+        # Dense results
+        for rank, item in enumerate(dense_results):
+
             key = (
                 item["document_id"],
                 item["chunk_id"]
             )
+
             combined[key] = {
-                "metadata":item,
-                "score":0
+                "document": item,
+                "rrf_score": 0
             }
-            combined[key]["score"] += (
-                1/(60+rank+1)
+
+            combined[key]["rrf_score"] += (
+                1 / (60 + rank + 1)
             )
-        for rank,item in enumerate(sparse_results):
+
+
+        # BM25 results
+        for rank, item in enumerate(sparse_results):
+
             key = (
                 item["document_id"],
                 item["chunk_id"]
             )
+
             if key not in combined:
-                combined[key]={
-                    "metadata":item,
-                    "score":0
+                combined[key] = {
+                    "document": item,
+                    "rrf_score": 0
                 }
-            combined[key]["score"] += (
-                1/(60+rank+1)
+
+            combined[key]["rrf_score"] += (
+                1 / (60 + rank + 1)
             )
+
+
         results = sorted(
             combined.values(),
-            key=lambda x:x["score"],
+            key=lambda x: x["rrf_score"],
             reverse=True
         )
+
+
         return [
             {
-                **r["metadata"],
-                "hybrid_score":r["score"]
+                **r["document"],
+                "hybrid_score": r["rrf_score"]
             }
             for r in results[:top_k]
         ]

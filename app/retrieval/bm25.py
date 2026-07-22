@@ -1,39 +1,119 @@
 from rank_bm25 import BM25Okapi
+import re
+
+
 class BM25Retriever:
+
+
     def __init__(self, documents):
+
         self.documents = documents
-        tokenized_docs = [
-            doc["text"].lower().split()
+
+
+        if not documents:
+            self.bm25 = None
+            return
+
+
+        corpus = [
+            self._tokenize(doc["text"])
             for doc in documents
         ]
+
+
         self.bm25 = BM25Okapi(
-            tokenized_docs
+            corpus
         )
+
 
     def search(
         self,
         query,
         top_k=5
     ):
-        tokens = query.lower().split()
-        scores = self.bm25.get_scores(
-            tokens
+
+        if self.bm25 is None:
+            return []
+
+
+        tokenized_query = self._tokenize(
+            query
         )
+
+
+        scores = self.bm25.get_scores(
+            tokenized_query
+        )
+
+
         ranked = sorted(
-            enumerate(scores),
-            key=lambda x: x[1],
+            range(len(scores)),
+            key=lambda i:scores[i],
             reverse=True
         )
-        results = []
-        for index, score in ranked[:top_k]:
+
+
+        results=[]
+
+
+        for idx in ranked[:top_k]:
+
+            doc=self.documents[idx]
+
+
             results.append(
-            {
-                "score": float(score),
-                "document_id": self.documents[index]["document_id"],
-                "filename": self.documents[index]["filename"],
-                "chunk_id": self.documents[index]["chunk_id"],
-                "page": self.documents[index]["page"],
-                "text": self.documents[index]["text"]
-            }
-        )
+                {
+                    "sparse_score":
+                        float(scores[idx]),
+
+
+                    "document_id":
+                        doc["metadata"]["document_id"],
+
+
+                    "parent_id":
+                        doc["metadata"]["parent_id"],
+
+
+                    "filename":
+                        doc["metadata"]["filename"],
+
+
+                    "chunk_id":
+                        doc["metadata"]["chunk_id"],
+
+
+                    "page":
+                        doc["metadata"]["page"],
+
+
+                    "text":
+                        doc["text"]
+                }
+            )
+
+
         return results
+
+
+
+    def _tokenize(
+        self,
+        text
+    ):
+
+        text=text.lower()
+
+
+        # remove punctuation
+        text=re.sub(
+            r"[^a-z0-9\s]",
+            "",
+            text
+        )
+
+
+        tokens=text.split()
+
+
+        return tokens

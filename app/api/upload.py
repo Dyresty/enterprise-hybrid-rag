@@ -28,9 +28,17 @@ async def upload_pdf(file: UploadFile = File(...)):
         )
 
     # Generate unique filename
-    file_id = str(uuid.uuid4())
-    filename = f"{file_id}_{file.filename}"
-    save_path = UPLOAD_FOLDER / filename
+    document_id = str(uuid.uuid4())
+    original_filename = Path(file.filename).name
+    save_path = UPLOAD_FOLDER / original_filename
+
+    if save_path.exists():
+        stem = save_path.stem
+        suffix = save_path.suffix
+        save_path = (
+            UPLOAD_FOLDER /
+            f"{stem}_{document_id[:8]}{suffix}"
+        )
 
     # Save file
     with open(save_path, "wb") as buffer:
@@ -62,13 +70,15 @@ async def upload_pdf(file: UploadFile = File(...)):
     vector_store.create_collection()
     vector_store.insert_chunks(
         chunks,
-        embeddings
+        embeddings,
+        document_id,
+        original_filename
     )
 
     return {
-        "document_id": file_id,
-        "filename": file.filename,
-        "stored_as": filename,
+        "document_id": document_id,
+        "filename": original_filename,
+        "stored_as": save_path.name,
         "pages": len(pages),
         "total_chunks": len(chunks),
         "first_chunk":

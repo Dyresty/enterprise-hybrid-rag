@@ -1,3 +1,5 @@
+import uuid
+
 from qdrant_client import QdrantClient
 from qdrant_client.models import (
     Distance,
@@ -36,7 +38,9 @@ class VectorStore:
     def insert_chunks(
             self,
             chunks,
-            embeddings
+            embeddings,
+            document_id,
+            filename
     ):
         points = []
         for idx, (chunk, vector) in enumerate(
@@ -44,9 +48,23 @@ class VectorStore:
         ):
             points.append(
                 PointStruct(
-                    id=idx,
+                    id=str(
+                        uuid.uuid5(
+                            uuid.NAMESPACE_DNS,
+                            f"{document_id}_{idx}"
+                        )
+                    ),
                     vector=vector,
-                    payload=chunk
+                    payload={
+                        "document_id": document_id,
+                        "filename": filename,
+                        "chunk_id": idx,
+                        "page": chunk.get(
+                            "page",
+                            None
+                        ),
+                        "text": chunk["text"]
+                    }
                 )
             )
         self.client.upsert(

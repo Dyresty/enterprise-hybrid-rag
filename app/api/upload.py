@@ -6,6 +6,8 @@ from fastapi import APIRouter, UploadFile, File, HTTPException
 
 from app.ingestion.parser import extract_pdf_text
 from app.ingestion.chunker import chunk_documents
+from app.retrieval.embeddings import EmbeddingModel
+from app.retrieval.vectorstore import VectorStore
 
 router = APIRouter()
 
@@ -41,10 +43,27 @@ async def upload_pdf(file: UploadFile = File(...)):
     pages = extract_pdf_text(
         str(save_path)
     )
+
     chunks = chunk_documents(
         pages
     )
-    print(chunks[:3])
+
+    texts = [
+        chunk["text"]
+        for chunk in chunks
+    ]
+    embedding_model = EmbeddingModel()
+    embeddings = (
+        embedding_model
+        .generate_embeddings(texts)
+    )
+
+    vector_store = VectorStore()
+    vector_store.create_collection()
+    vector_store.insert_chunks(
+        chunks,
+        embeddings
+    )
 
     return {
         "document_id": file_id,

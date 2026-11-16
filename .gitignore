@@ -8,3 +8,6 @@ __pycache__/
 .venv/
 qdrant_local/
 .pytest_cache/
+
+finetune/out/
+finetune/train.log

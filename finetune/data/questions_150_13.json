@@ -1,0 +1,645 @@
+{
+ "projects": {
+  "101107885": [
+   "How can real-time in situ characterization combined with advanced machine learning algorithms improve the reproducibility and scalability of solution-processed thin-film photovoltaic materials?",
+   "What is the duration, funding amount, and main coordinating institution of the INT-PVK-PRINT project under the HORIZON-MSCA-2022-PF-01 call?"
+  ],
+  "101087662": [
+   "How can optimal control and decision-making techniques be advanced for dynamic nonlinear processes occurring on networked systems with limited computational resources?",
+   "What are the funding details, coordination, and duration of the SCARCE project under the ERC-2022-COG call?"
+  ],
+  "101298363": [
+   "How can robotic systems integrate fast pattern recognition with deliberate reasoning to improve adaptability, safety, and explainability in dynamic real-world environments?",
+   "What are the start and end dates, funding amount, and coordinating institution of the OPERA project funded under the HORIZON programme?"
+  ],
+  "101304377": [
+   "How can the underlying mathematical problems related to code equivalence, rank-metric decoding, and q-ary decoding be analyzed to assess and improve the security of emerging code-based cryptographic schemes?",
+   "What are the funding details, coordinator institution, duration, and research call associated with the CODES project (Grant ID 101304377) under the ERC-2026-STG programme?"
+  ],
+  "101070599": [
+   "How can the security of open-source hardware and software components be assured throughout the full development and deployment lifecycle in interconnected IoT devices?",
+   "What is the duration, total EU funding, and coordinating institution of the SecOPERA project funded under the HORIZON-CL3-2021-CS-01 call?"
+  ],
+  "101291258": [
+   "How can a scalable and interoperable digital twin infrastructure combining simulation, generative AI, and federated computing improve decision-making processes across healthcare and living environment domains while ensuring privacy and regulatory compliance?",
+   "What is the funding amount, duration, and consortium composition of the AIGENT project under the HORIZON-INFRA-2025-01 call?"
+  ],
+  "101112768": [
+   "How can integrated remote sensing, site-specific risk assessment, and nature-based solutions be combined to accelerate the recovery and ecological restoration of contaminated soils in various land use settings?",
+   "What is the duration, funding amount, and coordinating institution of the EDAPHOS project funded under the HORIZON-MISS-2022-SOIL-01 call?"
+  ],
+  "101311731": [
+   "How can secure and resilient communication infrastructures be designed and maintained across terrestrial, maritime, and satellite networks to ensure uninterrupted digital connectivity in Europe?",
+   "What is the duration and total EU funding of the RESILIOUS project, and which institution coordinates its consortium?"
+  ],
+  "101092096": [
+   "How can novel phase change and memristive materials be used to develop energy-efficient neuromorphic computing architectures that process analog sensor data directly without digitization?",
+   "What is the duration, total EU funding, and coordinating institution of the PHASTRAC project funded under the HORIZON-CL4-2022-RESILIENCE-01 call?"
+  ],
+  "101081362": [
+   "What methodologies and governance frameworks are effective for evaluating and operationalizing ocean-based technologies aimed at removing carbon dioxide to support climate mitigation efforts?",
+   "What is the duration, total EU funding, and coordinating institution of the SEAO2-CDR project funded under the HORIZON-CL5-2022-D1-01-two-stage call?"
+  ],
+  "101295952": [
+   "How can embedded real-time structural health monitoring systems using ultrasound guided waves and fiber optic sensors improve the operational flexibility and cost efficiency of reusable space launchers?",
+   "What is the duration and total EU contribution of the SERENITY project, and which organization coordinates it?"
+  ],
+  "101095065": [
+   "How can artificial intelligence and advanced signal processing technologies be used to digitize, analyze, and enhance access to medieval and classical European music manuscripts?",
+   "What is the funding amount, project duration, and coordinating institution for the REPERTORIUM project under the HORIZON-CL2-2022-HERITAGE-01 call?"
+  ],
+  "101081980": [
+   "How can drinking water supply systems maintain microbial stability and manage disinfection by-products effectively under the impacts of climate change?",
+   "What is the duration and who is the coordinator of the SafeCREW project funded under the HORIZON-CL6-2022-ZEROPOLLUTION-01 call?"
+  ],
+  "101063504": [
+   "How does the human brain activate social cognitive mechanisms during interactions with humanoid robots, and can neural signals distinguish between social and general cognitive processing in such interactions?",
+   "What are the funding details, duration, and coordinating institution for the NeuroMarkerHRI project under the HORIZON-MSCA-2021-PF-01 call?"
+  ],
+  "101194232": [
+   "What technological advancements in lithography, chip design, process integration, and metrology are necessary to enable manufacturing at the 10-angstrom semiconductor node?",
+   "What are the funding details, coordinating organization, partner institutions, and project duration for the ACT10 project under the HORIZON-JU-Chips-2024-1-IA call?"
+  ],
+  "101072546": [
+   "How can data-driven simulation techniques be integrated with uncertainty quantification and optimization methods to improve modeling of systems governed by hyperbolic conservation laws and kinetic particle interactions?",
+   "What are the main funding details, coordinating institution, and participating partners involved in the DATAHYKING project funded under the HORIZON-MSCA-2021-DN-01 call?"
+  ],
+  "101120237": [
+   "How can artificial intelligence be developed and applied to address climate change and societal challenges while ensuring ethical and responsible usage?",
+   "What is the duration, total EU funding, and coordinating institution of the ELIAS project under the HORIZON programme?"
+  ],
+  "101070030": [
+   "How can an integrated open ecosystem enhance interoperability and strategic autonomy across the cloud, edge, and IoT segments within the European computing landscape?",
+   "What is the duration, total funding amount, and coordinating organization for the OpenContinuum project funded under the HORIZON-CL4-2021-DATA-01 call?"
+  ],
+  "101168687": [
+   "How do interactions between climate dynamics and tectonic processes influence sediment distribution, landscape stability, and the occurrence of geohazards over varying spatial and temporal scales?",
+   "What are the funding amount, project duration, coordinator institution, and participating organizations involved in the INITIATE project (Grant ID 101168687)?"
+  ],
+  "101043410": [
+   "How can modern machine learning techniques be employed by adversaries to discover vulnerabilities and generate exploits in computer systems?",
+   "What are the funding details, coordinator institution, and project duration of the MALFOY project under the ERC-2021-COG call?"
+  ],
+  "101302421": [
+   "How can trace metals in cave formations be used to develop a quantitative proxy for reconstructing long-term tropical cyclone activity and variability?",
+   "What are the key details regarding the funding, coordinator, partners, and duration of the PaleoTraCeS project funded under the ERC-2026-STG call?"
+  ],
+  "101279107": [
+   "How do sequential combinations of multiple antibiotics in clinical treatments influence the evolutionary dynamics of bacterial resistance?",
+   "What is the funding amount and duration for the EvoComb project, and which institutions are involved in its coordination and partnership?"
+  ],
+  "101057499": [
+   "What are the main chemical and biological factors affecting indoor air quality in European homes, and how can innovative monitoring and intervention strategies reduce exposure risks, especially for infants and young children?",
+   "What is the duration, funding amount, and coordinating institution of the INQUIRE project funded under the HORIZON programme?"
+  ],
+  "101097986": [
+   "How do nucleotide-dependent molecular switches that rely on pyrimidine nucleotides regulate cellular processes and what are their mechanisms of action in bacterial growth and pathogenicity?",
+   "What is the duration, funding amount, and coordinating institution of the C-SWITCH project funded under the ERC-2022-ADG call?"
+  ],
+  "101101093": [
+   "How can artificial intelligence applied to satellite imagery and open data improve the assessment of regional food security by capturing multiple dimensions such as availability, access, utilization, and sustainability?",
+   "What is the funding amount, duration, and coordinating institution of the EO4FoodSecurity project under the ERC-2022-POC2 call?"
+  ],
+  "101071224": [
+   "How can autonomous aerial systems equipped with advanced computer vision be utilized to improve the accuracy and efficiency of wildlife population monitoring and behavioral data collection in conservation efforts?",
+   "What is the duration, total EU contribution, and coordinating institution of the WildDrone project funded under the HORIZON-MSCA-2021-DN-01 call?"
+  ],
+  "101088528": [
+   "How did the developments during the mid-20th century contribute to the mathematical and conceptual foundations of general relativity, particularly regarding black holes and gravitational waves?",
+   "What is the funding amount, duration, and coordinating institution of the COGY project under the ERC-2022-COG call?"
+  ],
+  "101182721": [
+   "How can advanced computational techniques improve the accuracy and reliability of simulations predicting the initiation, movement, and deposition of gravitational mass-wasting events in mountainous regions?",
+   "What is the total EU contribution awarded to the MONUGEO project, and which institution coordinates this Horizon-funded initiative starting in March 2025?"
+  ],
+  "101166533": [
+   "How can augmented reality technology be utilized to enhance driver safety and improve human-machine interfaces in vehicles?",
+   "What is the duration and funding amount of the Rocksolid AR project, and which organization coordinates it?"
+  ],
+  "101082517": [
+   "How can on-orbit modular infrastructures powered by solar energy contribute to significantly reducing the carbon footprint of digital data centers and support Europe’s goal of carbon neutrality by 2050?",
+   "What is the total EU contribution for the ASCEND project, who coordinates it, and which key partners are involved in this Horizon-funded initiative?"
+  ],
+  "101103667": [
+   "How can advanced sensing technologies and artificial intelligence be integrated to improve the monitoring, diagnosis, and prognosis of lithium-ion battery health and performance throughout their lifecycle?",
+   "What is the duration, total EU funding, and main coordinating institution of the ENERGETIC project under the Horizon programme?"
+  ],
+  "101135876": [
+   "How can femtosecond laser writing be utilized to fabricate three-dimensional waveguides in glass for scalable and low-loss quantum photonic integrated circuits supporting a large number of reconfigurable optical modes?",
+   "What are the key details about the QLASS project’s funding, coordination, partners, and timeline under the HORIZON programme?"
+  ],
+  "101079894": [
+   "How can multimodal artificial intelligence models combining imaging, clinical notes, and biomarker data be developed and validated to improve patient stratification and personalized treatment in prostate and kidney cancers?",
+   "What is the total EU funding amount, project duration, and coordinating institution for the COMFORT project under the HORIZON-HLTH-2022-TOOL-12-two-stage call?"
+  ],
+  "101172675": [
+   "How can integrated platforms enhance interoperability and optimize flexibility management across multiple energy management systems and smart appliances in buildings and industrial sites?",
+   "What are the funding details, coordinator, and participating partners involved in the INDEPENDENT project under the HORIZON-CL5-2024-D3-01 call?"
+  ],
+  "101227645": [
+   "How can integrated computational models be used to simulate microbial behavior and assess the sustainability impacts of bioproduct manufacturing across multiple biological and industrial scales?",
+   "What are the funding details, coordinating institution, and participating partners involved in the FrameBio project under the HORIZON-MSCA-2024-DN-01 call?"
+  ],
+  "101194172": [
+   "How can advances in embedded non-volatile memory and microcontroller design improve the performance, security, and energy efficiency of AI computations at the edge?",
+   "What is the funding amount, duration, and list of partners involved in the NeAIxt project under the HORIZON-JU-Chips-2024-1-IA call?"
+  ],
+  "101168344": [
+   "How can machine learning techniques be developed and applied to enhance the sustainability and trustworthiness of AI solutions in smart manufacturing, smart cities, smart healthcare, and smart mobility?",
+   "What is the duration, funding amount, and coordinating institution of the TUAI project funded under the HORIZON-MSCA-2023-DN-01 call?"
+  ],
+  "101288398": [
+   "How can uncertainties in the formation and climate impact of aircraft contrails be reduced to optimize air traffic management for more environmentally sustainable aviation?",
+   "What are the key details regarding the REDUCT project’s coordination, funding, duration, and participating partners under the HORIZON-SESAR-2025-DES-ER-03 call?"
+  ],
+  "101138387": [
+   "How can a modular testing platform integrate immunocompetent in vitro and ex vivo modules with real-time sensing and machine learning models to improve toxicity and risk assessment throughout the entire life cycle of chemical substances?",
+   "What is the duration, total EU funding, and coordinating organization of the TOXBOX project funded under the HORIZON-CL4-2023-RESILIENCE-01 call?"
+  ],
+  "101167421": [
+   "How can advanced computational and biological techniques be integrated to improve the understanding and management of increased vulnerability in older adults leading to loss of independence?",
+   "What is the total EU funding amount and which institution coordinates the UNION project under the HORIZON-MSCA-2023-DN-01 call?"
+  ],
+  "101293266": [
+   "How can generative artificial intelligence be applied to integrate and analyze diverse environmental and observational data to improve understanding and prediction of complex Earth system interactions?",
+   "What is the duration, total EU funding, and coordinating institution of the GenAI4Earth project under the HORIZON-INFRA-2025-01 call?"
+  ],
+  "101094218": [
+   "How can cybersecurity be enhanced for networked medical devices by optimizing guidelines, standards, risk management, and implementing security by design principles?",
+   "What are the funding details, duration, coordinator institution, and partner organizations involved in the CYMEDSEC project under the HORIZON-HLTH-2022-IND-13 call?"
+  ],
+  "101312379": [
+   "How do democratic institutions influence the occurrence and management of political violence and social unrest within democratic societies?",
+   "What is the duration and which institutions coordinate and participate in the DIVINE project funded under the HORIZON-MSCA-2025-DN-01 call?"
+  ],
+  "101058359": [
+   "How can innovative pilot systems improve the dismantling and hydrometallurgical recycling processes to recover critical raw materials from end-of-life lithium-ion batteries for enhanced circular economy?",
+   "What is the EU funding amount, project duration, and coordinating organization for the BATRAW project?"
+  ],
+  "101136216": [
+   "How can the integration of advanced IoT solutions and AI/ML at both edge and cloud layers enhance the resilience and flexibility of renewable energy systems within a multi-level energy network?",
+   "What are the key funding details, coordinating organization, and participating partners involved in the HEDGE-IoT project under the HORIZON-CL5-2023-D3-01 call?"
+  ],
+  "101232236": [
+   "How can reactive systems that continuously interact with their environment be automatically synthesized when they involve complex, unbounded data domains beyond simple Boolean variables?",
+   "What is the funding amount, duration, and coordinating institution for the SyReP project funded under the ERC-2025-COG call?"
+  ],
+  "101298343": [
+   "How can the integration of classical and quantum optimizations improve the efficiency and usability of quantum programming tools to accelerate the adoption of quantum computing technologies?",
+   "What is the duration, total EU funding, and which institution coordinates the QuoUSKWe project funded under the HORIZON-CL4-2025-03 call?"
+  ],
+  "101088594": [
+   "How can trustworthy artificial intelligence models be developed to improve diagnosis, patient stratification, and personalized therapy decisions in oncology?",
+   "What is the funding amount, duration, and coordinating institution of the TAIPO project under the ERC-2022-COG call?"
+  ],
+  "101345004": [
+   "How can the confidence and reproducibility of metabolite identification in untargeted liquid chromatography-mass spectrometry experiments be improved to enhance biological pathway mapping and reduce misannotations?",
+   "What is the funding amount and which institution coordinates the TRUST METID project funded under the HORIZON-MSCA-2026-SE-01 call?"
+  ],
+  "101163659": [
+   "How can innovative real-time monitoring technologies and digital twin models improve the detection of material degradation and enhance accident management in nuclear power plants?",
+   "What is the duration, total EU funding, and coordinating institution of the FIND project funded under the HORIZON-EURATOM-2023-NRT-01 call?"
+  ],
+  "101226709": [
+   "How does foreign-accented speech influence neurocognitive responses and social interactions in both human-to-human and human-to-AI communication?",
+   "What is the duration, funding amount, and coordinating institution of the HUM.AI.N-ACCENT project funded under the HORIZON-MSCA-2024-DN-01 call?"
+  ],
+  "101297968": [
+   "How can new analytic tools be developed to enhance the study of fairness optimization, multi-agent system dynamics, and equilibrium learning within algorithmic game theory?",
+   "What are the funding details, participating institutions, and project duration for the Horizon project DyCoSAGT?"
+  ],
+  "101068785": [
+   "How can quantum computational speedups be demonstrated unconditionally and practically without relying on complexity-theoretic assumptions or oracle models?",
+   "What are the funding details, coordinating institution, and project duration for the QUARC project under the HORIZON-MSCA-2021-PF-01 call?"
+  ],
+  "101140052": [
+   "How can advanced digital technologies incorporating new biosensing materials and artificial intelligence improve continuous health and fitness monitoring through wearable devices?",
+   "What is the duration, funding amount, and coordinating institution of the H2TRAIN project funded under the HORIZON-KDT-JU-2023-1-IA call?"
+  ],
+  "101266438": [
+   "How did construction techniques, material sourcing, and workforce organization in Roman frontier cities along major rivers influence the interaction between society and environment during the early 1st to 4th century CE?",
+   "What is the funding amount and duration for the ConstruEnS project under the ERC-2025-ADG call, and which institutions coordinate and participate in it?"
+  ],
+  "101139942": [
+   "How can lightweight, compact, and power-efficient eye-tracking systems be developed to enable hands-free human-machine interaction suitable for safety-critical and general applications?",
+   "What are the funding details, duration, and main coordinating organization of the VIVA project funded under the HORIZON-KDT-JU-2023-2-RIA call?"
+  ],
+  "101216703": [
+   "How can the innovation potential of a country's research and innovation system be enhanced to support the career development of young researchers in artificial intelligence through cross-sector mobility and modernized funding mechanisms?",
+   "What is the total EU contribution, duration, and name of the coordinating institution for the FORGE-AI project funded under the HORIZON-WIDERA-2024-TALENTS-03 call?"
+  ],
+  "101094901": [
+   "How can advanced cybersecurity methods such as behavioral anomaly detection, encryption, and blockchain be integrated to enhance the security and privacy of interconnected medical devices within healthcare facilities?",
+   "What is the duration and funding amount of the SEPTON project, and which organization coordinates it under the HORIZON-HLTH-2022-IND-13 call?"
+  ],
+  "190122948": [
+   "How can advanced fisheye camera systems combined with proprietary algorithms improve the safety and accuracy of 3D perception in autonomous industrial vehicles?",
+   "What are the funding details, coordinator, and project duration for the Tripleye 3D Perception System under the HORIZON-EIC-2022-ACCELERATOR-01 call?"
+  ],
+  "101092723": [
+   "How can integrated photonic and electrochemical sensor technologies be combined to provide real-time, in situ monitoring of multiple water quality parameters including organic pollutants, microplastics, and heavy metals?",
+   "What is the duration, funding amount, and coordinating institution of the IBAIA project under the HORIZON programme?"
+  ],
+  "101095435": [
+   "How can a standardized and transparent framework be developed to evaluate and certify medical software using real-world data to support regulatory decision-making?",
+   "What is the total EU funding and which institution coordinates the REALM project under the HORIZON-HLTH-2022-TOOL-11 call?"
+  ],
+  "101208361": [
+   "How can wavefunction-based quantum electrodynamics methods be developed to accurately calculate molecular response functions within resonant electromagnetic cavities?",
+   "What are the key details regarding the funding, coordinator, and duration of the QEDControl project under the HORIZON-MSCA-2024-PF-01 call?"
+  ],
+  "101135077": [
+   "How can titanium be sustainably extracted from metallurgical waste streams to reduce CO2 emissions and dependency on imports for alloy production?",
+   "What is the duration and who is the coordinator of the EURO-TITAN project funded under the HORIZON-CL4-2023-RESILIENCE-01 call?"
+  ],
+  "101113979": [
+   "How can compact on-site machines for fresh oat milk production help reduce packaging waste and transportation emissions in local food supply chains?",
+   "What are the funding details, coordinator, and project duration for the HORIZON project The Oater (Grant ID 101113979)?"
+  ],
+  "101137975": [
+   "How can battery management systems be enhanced through hybrid physical and data-driven models to improve battery performance, lifespan, and safety under extreme conditions in next-generation vehicles?",
+   "What is the duration, total EU funding, and coordinating institution of the InnoBMS project under the HORIZON-CL5-2023-D5-01 call?"
+  ],
+  "101164556": [
+   "How can new software infrastructure and system software abstractions improve the efficiency and performance of data-intensive workloads on specialized modern hardware in cloud data centers?",
+   "What are the key funding details, coordinating institution, and project duration for the FDS project funded under the ERC-2024-STG call?"
+  ],
+  "101097056": [
+   "How can the security evaluation and design process of symmetric cryptographic primitives be improved to provide stronger, more reliable arguments against key-recovery attacks and accelerate their deployment?",
+   "What is the funding amount, duration, and coordinating institution for the SymTrust project under the ERC-2022-ADG call?"
+  ],
+  "101263011": [
+   "How can we accurately determine the formation routes and abundances of sugar-related complex organic molecules in interstellar molecular clouds using advanced chemical and radiative transfer models?",
+   "What are the funding details, coordinating institution, and participating partners of the PRECIOUS project under the HORIZON-MSCA-2025-PF call?"
+  ],
+  "101114635": [
+   "How can cyber security risks be assessed and mitigated in virtualized air traffic management environments to enhance system resilience?",
+   "What is the duration and which organizations are partners in the SEC-AIRSPACE project funded under the HORIZON-SESAR-2022-DES-ER-01 call?"
+  ],
+  "101158022": [
+   "How can specialized software frameworks based on quantum tensor networks improve the implementation and benchmarking of quantum algorithms on near-term quantum computing devices?",
+   "What is the funding amount, duration, and coordinating institution for the QTEngine project under the ERC-2023-POC call?"
+  ],
+  "101086251": [
+   "How can numerical simulations and deep learning techniques be combined to better understand the dynamics and observational signatures of exotic compact objects and black holes in strong gravity regimes?",
+   "What is the duration and total EU contribution of the NewFunFiCO project, and which institution coordinates it?"
+  ],
+  "101197332": [
+   "How can integrated digital data technologies and artificial intelligence be utilized to enhance climate adaptation and resilience in agriculture while minimizing its environmental impact?",
+   "What are the funding details, duration, coordinator, and key partners involved in the AgData project under the HORIZON-CL6-2024-GOVERNANCE-02 call?"
+  ],
+  "101189771": [
+   "How can compliance, ethics, and environmental sustainability be integrated by design into complex data and AI operational pipelines to ensure efficient and lawful processing?",
+   "What are the key funding details, coordinator, and consortium composition of the DataPACT project under the HORIZON-CL4-2024-DATA-01 call?"
+  ],
+  "101225797": [
+   "How can hybrid cryptographic methods be developed and integrated to enhance the security and resilience of digital identity management against future quantum computing threats in European online environments?",
+   "What are the start and end dates, funding amount, coordinator institution, and main partners involved in the POSEIDON project funded under the HORIZON-CL3-2024-CS-01 call?"
+  ],
+  "101080711": [
+   "How can integrative modeling of routinely collected clinical data improve early stratification and diagnosis of patients with musculoskeletal symptoms to optimize treatment pathways in rheumatic diseases?",
+   "What is the duration, total EU funding, and coordinating institution of the SPIDeRR project funded under the HORIZON-HLTH-2022-TOOL-12-two-stage call?"
+  ],
+  "101232855": [
+   "How can advanced knowledge graph technologies combined with artificial intelligence and 3D field documentation improve the accuracy and efficiency of archaeological and paleontological stratigraphic data collection and integration?",
+   "What is the total EU contribution, duration, and list of participating institutions in the StratiGraph project funded under the HORIZON-CL2-2024-HERITAGE-ECCCH-01 call?"
+  ],
+  "101058477": [
+   "How can advanced artificial intelligence, digital twins, and cognitive robotics be integrated to enable flexible and autonomous manufacturing processes for complex industrial tasks?",
+   "What is the duration, total EU funding, and coordinating organization of the COGNIMAN project under the HORIZON-CL4-2021-TWIN-TRANSITION-01 call?"
+  ],
+  "101338494": [
+   "How can multi-scale modelling of landslides improve risk assessment and mitigation strategies under changing climatic conditions?",
+   "What is the EU funding amount and which institution coordinates the TWINSLIDE project under the HORIZON-WIDERA-2026-02 call?"
+  ],
+  "101138642": [
+   "How can novel hydrometallurgical and automated sorting technologies be integrated to efficiently recycle critical raw materials from spent automotive components at commercial scale?",
+   "What are the funding details, duration, and consortium composition of the CRUSADE project under the HORIZON programme?"
+  ],
+  "101081383": [
+   "How can Earth System Models be enhanced to explicitly represent ocean mesoscale processes and improve predictions of climate variability, extremes, and tipping points over centennial timescales?",
+   "What are the key details regarding the funding, coordination, and consortium partners of the EERIE project under the HORIZON-CL5-2022-D1-02 call?"
+  ],
+  "101075731": [
+   "How can integrated multi-energy systems optimize district heating, cooling, and power distribution networks to enhance flexibility and support decarbonization efforts through sector coupling?",
+   "What is the total EU funding amount and who coordinates the SENERGY NETS project under the HORIZON-CL5-2021-D3-02 call?"
+  ],
+  "101169056": [
+   "How can advanced material designs and device architectures improve the efficiency and sustainability of indoor photovoltaic systems for powering low-energy electronics?",
+   "What is the total EU funding amount and who is coordinating the MENTOR project under the HORIZON-MSCA-2023-DN-01 call?"
+  ],
+  "101293545": [
+   "How can a federated digital infrastructure improve collaboration and data interoperability in advanced materials research across academic and industrial sectors in Europe?",
+   "What is the duration and who is the coordinator of the MaterialsCommons project funded under the HORIZON-CL4-2025-01 call?"
+  ],
+  "101299493": [
+   "How can advanced machine learning techniques be integrated with multimodal geochemical and petrological data to improve the understanding and prediction of magmatic processes and volcanic hazards?",
+   "What are the key details regarding the funding, coordinator, partner institutions, and project duration of the REALI3SE initiative under the HORIZON-MSCA-2025-SE-01 call?"
+  ],
+  "101178081": [
+   "How can personalized digital learning programs tailored to individual needs improve employability and facilitate labour market transitions for vulnerable socio-economic groups?",
+   "What is the duration, total EU funding, and who is the coordinating institution of the DIAMOND project funded under the HORIZON-CL2-2024-TRANSFORMATIONS-01 call?"
+  ],
+  "101138414": [
+   "How can a quantitative, multi-dimensional approach be applied to assess the safety and sustainability of nanomaterials across their entire life cycle, including synthesis, use, and end-of-life stages?",
+   "What is the duration and funding amount awarded to the INTEGRANO project under the HORIZON-CL4-2023-RESILIENCE-01 call, and which institution coordinates it?"
+  ],
+  "101069496": [
+   "How can advances in data science be leveraged to integrate and share high-quality cancer research data across Europe to improve cancer prevention, early diagnosis, treatment, and survivorship?",
+   "What is the duration and who is the coordinating institution of the 4.UNCAN.eu project funded under the HORIZON-MISS-2021-UNCAN-01 call?"
+  ],
+  "101166301": [
+   "How can novel ferroelectric materials be used to develop high-speed, low-cost non-volatile memory solutions to address the scaling challenges in the semiconductor memory industry?",
+   "What is the total EU funding allocated to the Fe-NVRAM project, and which organization is coordinating it under the HORIZON-EIC-2023-ACCELERATOR-01 call?"
+  ],
+  "101040238": [
+   "How can computational methods be improved to quantify uncertainty in the effective properties of heterogeneous materials with complex microstructures at multiple scales?",
+   "What is the duration, funding amount, and coordinating institution for the BeyondRVE project funded under the ERC-2021-STG call?"
+  ],
+  "101112135": [
+   "How can the integration and harmonization of diverse lung cancer health data sources improve regulatory and health technology assessment decision-making to enhance patient care and outcomes?",
+   "What are the funding details, coordinating institution, and duration of the IDERHA project under the HORIZON-JU-IHI-2022-01 call?"
+  ],
+  "101083377": [
+   "How can urban and peri-urban communities collaboratively develop and strengthen sustainable food sharing practices to enhance resilience against climate change and social challenges?",
+   "What is the duration and total EU funding amount awarded to the CULTIVATE project under the HORIZON-CL6-2022-COMMUNITIES-01 call?"
+  ],
+  "101141463": [
+   "How did the manuscripts from a Silk Road oasis contribute to the early development and formation of Buddhist traditions in Tibet through cultural and textual exchanges with Chinese sources?",
+   "What are the funding details, duration, coordinator institution, and call under which the BEST project is supported?"
+  ],
+  "101284098": [
+   "How can real-time structural integrity monitoring be achieved on complex aerospace and energy systems without relying on baseline reference data or centralized processing?",
+   "What are the funding details, coordinator institution, and project duration for the COBRAIN project under the HORIZON-MSCA-2025-PF call?"
+  ],
+  "101168322": [
+   "How can Europe improve its crisis management protocols and response capabilities specifically for incidents involving biological toxins, including detection, decontamination, and risk assessment?",
+   "What are the key details of the EMBRACE project regarding its funding source, project duration, coordinating organization, and participating partners?"
+  ],
+  "101293649": [
+   "How can integrated modeling approaches combining traditional climate models and artificial intelligence improve the accuracy and efficiency of projecting rapid climate changes and associated extreme weather events over the next few decades?",
+   "What is the total EU contribution and who coordinates the RealESM project funded under the HORIZON-CL5-2025-06 call?"
+  ],
+  "101113619": [
+   "How can artificial intelligence be integrated with digital building models to accelerate and improve the accuracy of passenger flow simulations in public transportation hubs?",
+   "What is the duration, coordinator, and EU funding amount for the ACSAI project funded under the HORIZON-EIE-2022-SCALEUP-02 call?"
+  ],
+  "101096435": [
+   "How can emerging cryptographic techniques and privacy-preserving computing be integrated to secure data usage, transmission, and edge processing in future heterogeneous communication networks?",
+   "What are the key details regarding the funding, duration, coordinator, and participating organizations involved in the CONFIDENTIAL6G project under the HORIZON-JU-SNS-2022 call?"
+  ],
+  "101139972": [
+   "How can semiconductor manufacturing processes and equipment be advanced to enable production of CMOS chips at the 10-angstrom technology node, including lithography, chip design, process technology, and metrology?",
+   "What is the funding amount, duration, and who is the coordinator of the 10ACe project under the Horizon KDT JU 2023-1-IA call?"
+  ],
+  "101119547": [
+   "How can a comprehensive framework facilitate the transition from classical public key cryptography to quantum-resistant algorithms across diverse application domains such as smart grids, 5G networks, and blockchain ledgers?",
+   "What are the key details regarding the funding, duration, coordinator, and participating partners of the PQ-REACT project under the HORIZON program?"
+  ],
+  "101139133": [
+   "How can the integration of optical and radio transport technologies be optimized to create efficient and scalable edge networks for next-generation wireless communication?",
+   "What is the total EU funding allocated to the ECO-eNET project and which institution coordinates it?"
+  ],
+  "101093864": [
+   "How can regional authorities and community organizations integrate local and pan-European data sources to develop context-specific climate risk assessments that improve regional risk management plans for climate adaptation and emergency response?",
+   "What are the key details regarding the funding, coordinator, and consortium partners involved in the CLIMAAX project funded under the HORIZON-MISS-2021-CLIMA-02 call?"
+  ],
+  "101283242": [
+   "How can machine learning and econometric modeling be combined to quantify the financial impacts of increasing frequency and intensity of extreme climate events on economic markets?",
+   "What is the duration, funding amount, and which institutions are coordinating and participating in the STOCKCLIM project funded under the HORIZON-MSCA-2025-PF call?"
+  ],
+  "101125803": [
+   "How do mechanical forces influence the coordination between tissue morphogenesis and cell fate acquisition during embryonic development?",
+   "What are the funding details, coordinator institution, and project duration for the ERC-funded MechanoFate project?"
+  ],
+  "101202459": [
+   "How can Europe develop advanced processor chiplets and an integrated software stack to achieve digital autonomy in high-performance computing and AI applications?",
+   "What are the funding details, duration, and coordinating institution of the DARE SGA 1 project under the HORIZON-EUROHPC-JU-2024-DARE-SGA-04 call?"
+  ],
+  "101311627": [
+   "How can integrating microbiology, cancer biology, and artificial intelligence improve the identification and therapeutic targeting of molecular mechanisms involved in cancers driven by pathogenic microorganisms?",
+   "What is the duration, total EU funding, and coordinating institution of the TagTIC project funded under the HORIZON-MSCA-2025-DN-01 call?"
+  ],
+  "101044770": [
+   "How can off-chain cryptographic protocols be designed to enhance scalability, privacy, and functionality in decentralized transaction systems beyond the limitations of current blockchain platforms?",
+   "What are the funding details, coordinating institution, and project duration for the CRYPTOLAYER project under the ERC-2021-COG call?"
+  ],
+  "101343634": [
+   "How can biomimetic nanovesicles be engineered to effectively penetrate and eradicate chronic biofilm infections that exhibit high resistance to conventional antibiotics?",
+   "What is the duration and funding amount of the ARMOR project, and which institution coordinates this EU-funded initiative?"
+  ],
+  "101277303": [
+   "How can machine learning and automated experimental platforms be combined to accelerate the discovery of stable wide bandgap perovskite materials for enhancing the efficiency of tandem solar cells?",
+   "What is the funding amount, duration, and coordinating institution for the Perov-AccTEST project under the HORIZON-MSCA-2025-PF call?"
+  ],
+  "101103956": [
+   "How can building automation systems be integrated with user behavior models and multi-domain controls to improve energy performance in non-residential historic buildings?",
+   "What are the funding details, coordinator, and participating partners involved in the SMARTeeSTORY project under the HORIZON-IA scheme?"
+  ],
+  "101167289": [
+   "How do specific neuronal networks implement spatial representation and navigational computations through place cell dynamics and connectivity in a small vertebrate brain?",
+   "What are the funding details, duration, and coordinating institutions involved in the COGNECTOMICS project supported under the ERC-2024-SyG call?"
+  ],
+  "101077902": [
+   "How can infinite-state systems be effectively approximated by finite-state models to enable more efficient software verification, particularly in the context of concurrency and recursion?",
+   "What is the duration, total EU funding, and coordinating institution for the FINABIS project funded under the ERC-2022-STG call?"
+  ],
+  "101285102": [
+   "How can real-time predictive models be developed to optimize the design and control of viscoelastic adhesive interfaces with complex, non-smooth surface topologies using integrated physics and machine learning approaches?",
+   "What are the key details regarding the funding, coordinator, partners, and timeline of the REAL-ADHERE project under the HORIZON-MSCA-2025-PF call?"
+  ],
+  "101070627": [
+   "How can a continuous security assessment framework enhance the protection and certification of open-source hardware and software components used in Internet of Things devices throughout their lifecycle?",
+   "What are the key details regarding the funding, coordinator, and partners involved in the REWIRE project under the HORIZON-CL3-2021-CS-01 call?"
+  ],
+  "101219324": [
+   "How can diverse and disparate datasets be integrated using federated learning to improve patient stratification and predictive modeling for a chronic joint disease with heterogeneous progression?",
+   "What is the duration, total EU funding, and coordinating institution of the PROBE project funded under the HORIZON-JU-IHI-2024-08-two-stage call?"
+  ],
+  "101339341": [
+   "How can the resilience and cybersecurity of increasingly digitalised and interconnected electricity grids be improved to support the secure integration of renewable energy and reliable system operation?",
+   "What is the total EU contribution and who coordinates the TWIN-CYGRID project funded under the HORIZON-WIDERA-2026-02 call?"
+  ],
+  "101251004": [
+   "How can low-temperature water electrolysis systems be optimized using advanced membrane technology and integrated smart components to enhance performance, durability, and cost efficiency for sustainable hydrogen production?",
+   "What is the duration, total EU funding, and coordinating organization of the NEREUS project funded under the HORIZON-JU-CLEANH2-2025 call?"
+  ],
+  "101070588": [
+   "How can hybrid collective intelligence systems enhance decision support for professionals dealing with complex, open-ended problems by integrating expert knowledge and machine-generated suggestions?",
+   "What are the key details of the HACID project funding, including its EU contribution, coordinator, partner organizations, and project duration under the HORIZON programme?"
+  ],
+  "101137132": [
+   "How can rapid, mobile diagnostic technologies be integrated to improve early detection and surveillance of emerging and neglected transboundary infectious diseases?",
+   "What is the duration, total EU funding, and coordinating institution of the PREPARE-TID project funded under the HORIZON-HLTH-2023-TOOL-05 call?"
+  ],
+  "101252959": [
+   "How can large-scale generation of high-quality protein-ligand interaction data accelerate the development and optimization of small-molecule drugs using machine learning techniques?",
+   "What are the funding details, duration, coordinator, and key partners involved in the LIGAND-AI project under the HORIZON-JU-RIA scheme?"
+  ],
+  "101221866": [
+   "How can data-driven techniques be used to systematically generate and validate reduced-order models that accelerate high-fidelity simulations of turbulent reacting flows in combustion applications?",
+   "What are the funding details, project duration, and coordinating institution for the ProtoMan project under the ERC-2025-STG call?"
+  ],
+  "101135990": [
+   "How can adaptive collaboration between human workers and AI-driven robotic systems be optimized to improve working conditions and decision-making confidence across multiple industry sectors?",
+   "What is the duration and total EU funding amount for the AI4Work project, and which organization coordinates it?"
+  ],
+  "101091449": [
+   "How can digital twins and data-driven models be integrated with inline feedforward control strategies to optimise production efficiency in high-mix, low-volume manufacturing systems?",
+   "What is the duration, total funding, and coordinating organization of the PIONEER project funded under the HORIZON-CL4-2022-RESILIENCE-01 call?"
+  ],
+  "101114715": [
+   "How can artificial intelligence and machine learning be applied to dynamically balance airspace demand and capacity through automated configuration and virtualization techniques?",
+   "What is the total EU funding allocated to the ISLAND project and which organization coordinates it?"
+  ],
+  "101058573": [
+   "How can heterogeneous scholarly data be integrated and analyzed using AI-assisted knowledge graphs to improve accessibility and usability of scientific research?",
+   "What is the total EU funding amount and who is the coordinating institution for the SciLake project under the HORIZON-INFRA-2021-EOSC-01 call?"
+  ],
+  "101093006": [
+   "How can a programming environment support the development and execution of applications in dynamic and heterogeneous swarm systems through decentralised machine learning and distribution abstractions?",
+   "What are the funding details, coordinator institution, and duration of the TaRDIS project funded under the HORIZON-CL4-2022-DATA-01 call?"
+  ],
+  "101227034": [
+   "How can autonomous robotic systems combined with AI and advanced sensors improve the efficiency and accuracy of sample collection and monitoring in ecosystem conservation?",
+   "What is the total EU contribution for the WildBotics project, who is the coordinator, and what are the project's start and end dates?"
+  ],
+  "101070009": [
+   "How can the integration of non-volatile, nanosecond-scale optical switches based on phase change materials improve capacity and latency in next-generation central office architectures for high-speed passive optical networks?",
+   "What is the total EU funding and who coordinates the OCTAPUS project under the HORIZON-CL4-2021-DIGITAL-EMERGING-01 call?"
+  ],
+  "101092702": [
+   "How can decentralized and programmable edge computing frameworks enhance identity management and data processing for large-scale interconnected devices without relying on centralized cloud infrastructures?",
+   "What is the funding amount, project duration, and coordinating institution for the OASEES project under the HORIZON-CL4-2022-DATA-01 call?"
+  ],
+  "101080086": [
+   "How can multi-level quantum information carriers be utilized to improve the scalability, usability, and certification of quantum computing technologies for scientific and industrial applications?",
+   "What is the duration and total EU funding amount for the NeQST project, and which institution coordinates it?"
+  ],
+  "101167512": [
+   "How can integrating multi-omics data, artificial intelligence, and organ-on-chip models improve understanding and eradication of residual therapy-resistant leukemia cells to prevent relapse?",
+   "What is the total EU contribution and who is the coordinating institution for the MIRACLE project funded under the HORIZON-MSCA-2023-DN-01 call?"
+  ],
+  "101298715": [
+   "How can a decentralized and encrypted collaborative platform enhance privacy and user control in private workspaces and secure social networks?",
+   "What is the duration, funding amount, and list of partners involved in the ELFA project funded under the HORIZON-CL4-2025-03 call?"
+  ],
+  "101190614": [
+   "How can advanced digital tools be integrated to monitor the impact of climate change on parasitic infections in underserved rural communities in sub-Saharan Africa?",
+   "What is the duration, funding amount, and list of partners involved in the DIDIDI project funded under the HORIZON-JU-GH-EDCTP3-2024-01-two-stage call?"
+  ],
+  "101235440": [
+   "How can interdisciplinary methods combining artificial intelligence, blockchain analytics, and quantum-safe cryptography improve anti-money laundering compliance in rapidly evolving cryptocurrency and decentralized finance ecosystems?",
+   "What is the funding amount, duration, and list of participating institutions for the FORCE project under the HORIZON-MSCA-2024-SE-01 call?"
+  ],
+  "101226455": [
+   "How can advanced data analytics and causal inference methods be applied to observational health data to evaluate the impact of health policies on reducing socioeconomic health disparities across Europe?",
+   "What is the duration, funding amount, and coordinating institution of the HEPARD project under the HORIZON-MSCA-2024-DN-01 call?"
+  ],
+  "101308487": [
+   "How can advanced technologies be integrated to enhance digital forensic investigations of crimes involving cryptocurrencies while ensuring compliance with data protection and privacy laws?",
+   "What is the total EU funding allocated to the FIAC project, and which institution coordinates it?"
+  ],
+  "101168379": [
+   "How can advanced artificial intelligence and machine learning techniques be applied to improve personalized medical decision-making and clinical trial design in neurodegenerative disorders?",
+   "What is the funding amount and who is the coordinating institution of the AIPD project under the HORIZON-MSCA-2023-DN-01 call?"
+  ],
+  "101103997": [
+   "How can advances in automation, data science, and modeling be integrated to accelerate and optimize the testing process of electric battery cells?",
+   "What is the total EU funding amount and who coordinates the DigiBatt project under the HORIZON-CL5-2022-D2-01 call?"
+  ],
+  "101266061": [
+   "How can dietary strategies targeting inflammation and the gut-brain axis be used to prevent and manage mental health conditions across different population groups?",
+   "What is the total EU contribution and who coordinates the BEETHOVEN project funded under the HORIZON-CL6-2025-02 call?"
+  ],
+  "101058427": [
+   "How can federated and interoperable data infrastructures be utilized to securely integrate and share diverse cancer-related datasets across European countries to enhance data-driven oncology research?",
+   "What is the duration and who is the coordinating institution of the EOSC4Cancer project funded under the HORIZON-INFRA-2021-EOSC-01 call?"
+  ],
+  "101209198": [
+   "How can novel two-dimensional materials and phonon-polariton interactions be utilized to develop ultrafast, energy-efficient neuromorphic computing devices at the nanoscale?",
+   "What is the total EU contribution and who coordinates the Q-MIND project funded under the HORIZON-MSCA-2024-PF-01 call?"
+  ],
+  "101040977": [
+   "How can a human-derived three-dimensional vascularized cardiac model be developed to better understand the cellular interactions and pathological mechanisms underlying coronary microvascular disease?",
+   "What are the funding details, coordinator institution, and project duration for the 3DVasCMD initiative supported under the ERC-2021-STG call?"
+  ],
+  "101041375": [
+   "How can large-scale data analytics be made more cost-efficient and portable across different cloud providers without vendor lock-in?",
+   "What are the funding details, coordinator institution, and project duration for the CODAC project under the ERC-2021-STG call?"
+  ],
+  "101120684": [
+   "How can a dynamic and reusable certification system improve the conformity assessment process for complex ICT products, services, and processes incorporating multiple assurance levels and components?",
+   "What is the duration, total EU funding, and which organization coordinates the CUSTODES project funded under the HORIZON-CL3-2022-CS-01 call?"
+  ],
+  "101079774": [
+   "How can large-scale experimental digital infrastructures be designed and governed to support research on distributed computing, IoT, and next-generation communication networks?",
+   "What is the duration, funding amount, and coordinating institution for the SLICES-PP project under the HORIZON-INFRA-2021-DEV-02 call?"
+  ],
+  "101157658": [
+   "How can integrated modelling and artificial intelligence be used to enhance the sustainability and resilience of forest-based value chains under climate change pressures?",
+   "What is the funding amount and who is the coordinator of the OptiForValue project under the HORIZON-JU-CBE-2023 call?"
+  ],
+  "101096354": [
+   "How can data-driven tools and social science methodologies be integrated to activate citizens and optimize energy communities for enhanced local renewable energy consumption and grid flexibility?",
+   "What are the start and end dates, total EU funding, and coordinating institution of the ENPOWER project funded under the HORIZON-CL5-2022-D3-01 call?"
+  ],
+  "101120296": [
+   "How can advances in geometry and optimisation improve tensor calculus for applications in high-performance scientific computing and data analysis?",
+   "What is the duration and which institutions coordinate and participate in the TENORS project funded under the HORIZON-MSCA-2022-DN-01 call?"
+  ],
+  "101268449": [
+   "How did legal frameworks and institutional practices shape the experiences of captivity and slavery across Mediterranean and Atlantic Iberian territories in the early modern period?",
+   "What is the duration, funding amount, and coordinating institution of the IBERLAW project funded under the HORIZON-MSCA-2025-PF call?"
+  ],
+  "101341806": [
+   "How can scalable and secure AI infrastructures be optimized to support reliable deployment of generative and agentic AI systems across cloud, edge, and high-performance computing environments?",
+   "What are the key details of the AIStars4EU project, including its funding amount, coordinator institution, and consortium partners involved?"
+  ],
+  "101062754": [
+   "How can mathematical causal models be used to determine whether remembering an event necessarily depends on a causal connection to the original experience?",
+   "What is the duration and who is the coordinator of the MEMOCAUSE project funded under the HORIZON-MSCA-2021-PF-01 call?"
+  ]
+ },
+ "off_topic": [
+  "What is the best recipe for homemade lasagna?",
+  "Who won the FIFA World Cup in 2022?",
+  "How do I apply for a building permit in my local municipality?",
+  "What are the latest quarterly earnings of Tesla Inc.?",
+  "What is the fastest route to drive from Paris to Barcelona?",
+  "Which actor played Iron Man in the Marvel movies?",
+  "What is the weather forecast for London tomorrow?",
+  "How do I train for a marathon as a beginner?",
+  "What are some popular tourist attractions in Tokyo?",
+  "Who won the NBA championship in 2023?",
+  "What is the nutritional value of a medium-sized avocado?",
+  "How do I reset my home Wi-Fi router?",
+  "What are the opening hours of the local post office in Berlin?",
+  "What is the current stock price of Apple Inc.?",
+  "How much does a flight from New York to Rome cost in July?",
+  "Who is the highest-paid celebrity in 2024?",
+  "What is the capital city of Australia?",
+  "How do I make sourdough bread from scratch?",
+  "What are the rules of cricket?",
+  "Where can I find the nearest public library to my location?",
+  "What is the recipe for a classic margarita cocktail?",
+  "Who holds the record for the most Olympic gold medals?",
+  "How do I file my personal income tax return in France?",
+  "What are the latest sales figures for Samsung smartphones?",
+  "What is the best time of year to visit the Greek islands?",
+  "Who won the Eurovision Song Contest in 2023?",
+  "How do I change a flat tire on a bicycle?",
+  "What are the symptoms of the common cold?",
+  "Where can I watch the next UEFA Champions League match?",
+  "What is the history of the Mona Lisa painting?",
+  "How do I start a vegetable garden in my backyard?",
+  "What is the price of a Tesla Model 3 in Germany?",
+  "Who is the current Prime Minister of the United Kingdom?",
+  "How do I bake chocolate chip cookies?",
+  "What are some effective exercises for lower back pain?",
+  "Where can I find live jazz music in Amsterdam?",
+  "What is the average salary of a software engineer in Spain?",
+  "Who won the Tour de France in 2023?",
+  "How do I prepare a traditional paella?"
+ ]
+}

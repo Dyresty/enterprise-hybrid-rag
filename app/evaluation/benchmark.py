@@ -8,9 +8,13 @@ Questions with "relevant": [] are out-of-scope and must be refused.
 """
 import argparse
 import json
+import os
 import re
 import statistics
+import time
 from pathlib import Path
+
+from openai import OpenAI
 
 from app import config
 from app.evaluation.retrieval_metrics import hit_at_k, precision_at_k, recall_at_k, reciprocal_rank, unique_docs
@@ -52,22 +56,36 @@ def evaluate_retrieval(c, questions, ks=(1, 5, 10)):
     return rows
 
 
+def judge_llm():
+    # The judge stays fixed (OpenAI, JUDGE_MODEL) even when the model under test is a local one,
+    # so a model never grades its own answers.
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    model = os.getenv("JUDGE_MODEL", "gpt-4.1-mini")
+
+    def chat(messages):
+        response = client.chat.completions.create(model=model, messages=messages, temperature=0)
+        return response.choices[0].message.content
+
+    return chat
+
+
 def evaluate_generation(c, questions):
     answerable = [q for q in questions if q["relevant"]]
     unanswerable = [q for q in questions if not q["relevant"]]
-    cited, correct_source, supported, refused = [], [], [], []
+    cited, correct_source, supported, refused, latency = [], [], [], [], []
+    judge = judge_llm()
 
     for q in answerable:
         documents = c.rag.retrieve(q["question"])
+        start = time.perf_counter()
         result = c.rag.generate_answer(q["question"])
+        latency.append(time.perf_counter() - start)
         numbers = {int(n) for n in re.findall(r"\[(\d+)\]", result["answer"])}
         cited_ids = {s["document_id"] for s in result["sources"] if s["n"] in numbers}
         cited.append(float(bool(numbers)))
         correct_source.append(float(bool(cited_ids & set(q["relevant"]))))
         context, _ = c.rag.context_builder.build(documents)
-        verdict = c.rag.llm.chat(
-            [{"role": "user", "content": JUDGE_PROMPT.format(context=context, answer=result["answer"])}], 0
-        )
+        verdict = judge([{"role": "user", "content": JUDGE_PROMPT.format(context=context, answer=result["answer"])}])
         supported.append(float(verdict.strip().upper().startswith("SUPPORTED")))
 
     for q in unanswerable:
@@ -78,6 +96,7 @@ def evaluate_generation(c, questions):
         "Cites a relevant document": statistics.mean(correct_source),
         "Faithful (LLM judge)": statistics.mean(supported),
         "Out-of-scope refused": statistics.mean(refused) if refused else float("nan"),
+        "Median answer latency (s)": statistics.median(latency),
     }
 
 
@@ -92,6 +111,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--golden", default="eval/golden_cordis.jsonl")
     parser.add_argument("--generation", action="store_true")
+    parser.add_argument("--out", default="eval/results.md")
     args = parser.parse_args()
 
     questions = [json.loads(line) for line in Path(args.golden).read_text(encoding="utf-8").splitlines() if line.strip()]
@@ -111,7 +131,7 @@ def main():
     text = "\n".join(report)
     print(text)
     c.vector_store.close()
-    Path("eval/results.md").write_text(text + "\n", encoding="utf-8")
+    Path(args.out).write_text(text + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

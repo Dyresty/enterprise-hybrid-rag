@@ -82,6 +82,58 @@ Limitations: 37 questions is small (one question = 2.7 points), and almost every
 - German-language queries (switch to `bge-m3`)
 - an LLM-judge faithfulness run on the full set
 
+## Fine-tuning a local model (QLoRA)
+
+The goal: a small open model that can answer in this pipeline **fully on-prem**, in the required format (grounded, `[n]` citations, exact refusal sentence). RAG supplies the facts. Fine-tuning teaches behaviour.
+
+**Data (teacher distillation), `finetune/build_dataset.py`:**
+1. 150 CORDIS projects are sampled, **excluding every project in the evaluation set**.
+2. gpt-4.1-mini writes 2 questions per project: one topical paraphrase and one factual question.
+3. The real retrieval pipeline fetches context for each question, distractor projects included.
+4. The teacher answers with the production system prompt.
+5. Answers that don't cite the source project are dropped (2 of 300).
+6. 40 off-topic questions are added, with the refusal sentence as the target.
+
+Result: 337 examples (303 train, 34 validation). Generated questions are cached so reruns cost nothing.
+
+**Training, `finetune/train_qlora.py`:**
+- Base model: Qwen2.5-3B-Instruct, loaded in 4-bit NF4 with double quantisation and bf16 compute.
+- LoRA: r=16, alpha=32, dropout 0.05 on all attention and MLP projections. 29.9M trainable parameters (0.96%).
+- Loss on the answer only (prompt/completion format).
+- Optimiser: LR 2e-4 with cosine schedule, effective batch 8, gradient checkpointing, 1 epoch.
+- Examples longer than 3,072 tokens are dropped rather than truncated, because truncation would cut the answer. 261 examples were used.
+- Training took 17 minutes on a 12 GB laptop GPU, with a peak of 6.7 GB. Validation loss was 0.335 and validation token accuracy 90.3%.
+
+> Long sequences × Qwen's 152k-token vocabulary make the output logits the main memory cost (about 2.3 GB in fp32 for one 3.8k-token sequence). Before the length filter and an eval batch size of 1, training spilled past 12 GB into shared system memory and slowed down about 10×, without an out-of-memory error.
+
+**Serving and evaluation.** The adapter is merged into the base weights. `finetune/serve.py` exposes the model behind an OpenAI-compatible endpoint, so the RAG switches to it with `LLM_BASE_URL` alone. Base and fine-tuned models are served the same way: bf16, same chat template, greedy decoding. The judge stays fixed at gpt-4.1-mini.
+
+| Metric | Base Qwen2.5-3B | QLoRA fine-tuned | gpt-4.1-mini |
+|---|---|---|---|
+| Answers with `[n]` citations | 0.730 | **0.784** | 1.000 |
+| Cites a relevant document | 0.703 | **0.757** | 0.973 |
+| Faithful (LLM judge) | 1.000 | 1.000 | 1.000 |
+| Out-of-scope refused | 1.000 | 1.000 | 1.000 |
+| Median latency | 4.9 s | 7.4 s | API |
+
+How to read this:
+- The citation rate improves by 5.4 points. That is 2 of 37 questions: the right direction, but within noise for this set size.
+- Faithfulness and refusals were already perfect for both models.
+- A 3B model with 261 examples and 1 epoch is a proof of concept. It closes only a small part of the gap to gpt-4.1-mini.
+
+Next steps:
+- more data and epochs
+- DPO on cited vs uncited answers
+- a 7B model on a cluster GPU
+- GGUF conversion with llama.cpp for Ollama (the installed Ollama imports safetensors only through its MLX engine, which doesn't support Qwen2)
+
+```bash
+python -m finetune.build_dataset --projects 150 --off-topic 40
+python -m finetune.train_qlora
+python -m finetune.serve --model finetune/out/merged --name cordis-qwen --port 8100
+LLM_BASE_URL=http://127.0.0.1:8100/v1 LLM_MODEL=cordis-qwen python -m app.evaluation.benchmark --generation --out eval/results_cordis_qwen.md
+```
+
 ## Quickstart
 
 ```bash

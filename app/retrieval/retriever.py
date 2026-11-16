@@ -1,72 +1,13 @@
-from app.embeddings.embedding_service import EmbeddingModel
-from app.vectorstore.qdrant_service import VectorStore
-
-
 class Retriever:
+    """Dense retrieval: embed the query, nearest-neighbour search in Qdrant."""
 
-    def __init__(self):
+    def __init__(self, embedding_model, vector_store):
+        self.embedding_model = embedding_model
+        self.vector_store = vector_store
 
-        self.embedding_model = EmbeddingModel()
-        self.vector_store = VectorStore()
-
-
-    def search(
-        self,
-        query,
-        top_k=5
-    ):
-
-        query_embedding = (
-            self.embedding_model
-            .generate_embeddings(
-                [query]
-            )[0]
-        )
-
-
-        results = (
-            self.vector_store
-            .search(
-                query_embedding,
-                limit=top_k
-            )
-        )
-
-
-        documents=[]
-
-
-        for result in results:
-
-            payload=result.payload
-
-            documents.append(
-                {
-                    "dense_score": result.score,
-
-                    "document_id":
-                        payload["document_id"],
-
-                    "parent_id":
-                        payload["parent_id"],
-
-                    "filename":
-                        payload["filename"],
-
-                    "chunk_id":
-                        payload["chunk_id"],
-
-                    "page":
-                        payload["page"],
-
-                    "text":
-                        payload["text"]
-                }
-            )
-
-
-        print("DENSE RETRIEVER OUTPUT:")
-        print(documents[0])
-
-
-        return documents
+    def search(self, query, top_k=5):
+        vector = self.embedding_model.embed_query(query)
+        return [
+            {**r.payload, "dense_score": r.score}
+            for r in self.vector_store.search(vector, limit=top_k)
+        ]

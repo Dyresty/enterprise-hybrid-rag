@@ -5,3 +5,6 @@ qdrant_storage/*
 # Python cache
 __pycache__/
 *.pyc
+.venv/
+qdrant_local/
+.pytest_cache/

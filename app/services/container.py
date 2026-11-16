@@ -1,89 +1,30 @@
-from app.retrieval.retriever import Retriever
+"""Builds every service once (models are loaded a single time) and wires them together."""
+from functools import lru_cache
+
+from app.embeddings.embedding_service import EmbeddingModel
+from app.llm.llm_service import LLMService
 from app.retrieval.bm25 import BM25Retriever
 from app.retrieval.hybrid import HybridRetriever
 from app.retrieval.reranker import Reranker
-
-from app.services.rag_service import RAGService
+from app.retrieval.retriever import Retriever
 from app.services.context_builder import ContextBuilder
-from app.llm.llm_service import LLMService
-
+from app.services.ingestion_service import DocumentIngestionService
+from app.services.rag_service import RAGService
 from app.vectorstore.qdrant_service import VectorStore
 
 
-
-# -----------------------------
-# Dense Retriever
-# -----------------------------
-
-dense_retriever = Retriever()
-
-
-
-# -----------------------------
-# BM25 Retriever
-# -----------------------------
-
-vector_store = VectorStore()
+class Container:
+    def __init__(self):
+        self.embedding_model = EmbeddingModel()
+        self.vector_store = VectorStore(dim=self.embedding_model.dim)
+        self.dense = Retriever(self.embedding_model, self.vector_store)
+        self.bm25 = BM25Retriever(self.vector_store.get_all_documents())
+        self.hybrid = HybridRetriever(self.dense, self.bm25)
+        self.reranker = Reranker()
+        self.ingestion = DocumentIngestionService(self.embedding_model, self.vector_store, self.bm25)
+        self.rag = RAGService(self.hybrid, self.reranker, ContextBuilder(), LLMService())
 
 
-try:
-
-    bm25_documents = vector_store.get_all_documents()
-
-
-except Exception as e:
-
-    print(
-        "Could not load documents from Qdrant:",
-        e
-    )
-
-    bm25_documents = []
-
-
-print(
-    "BM25 DOCUMENT COUNT:",
-    len(bm25_documents)
-)
-
-
-bm25_retriever = BM25Retriever(
-    bm25_documents
-)
-
-
-
-# -----------------------------
-# Hybrid Retriever
-# -----------------------------
-
-hybrid_retriever = HybridRetriever(
-    dense_retriever,
-    bm25_retriever
-)
-
-
-
-# -----------------------------
-# Reranker
-# -----------------------------
-
-reranker = Reranker()
-
-
-
-# -----------------------------
-# Services
-# -----------------------------
-
-context_builder = ContextBuilder()
-
-llm = LLMService()
-
-
-rag_service = RAGService(
-    hybrid_retriever,
-    reranker,
-    context_builder,
-    llm
-)
+@lru_cache
+def get_container():
+    return Container()

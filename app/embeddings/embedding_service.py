@@ -1,15 +1,21 @@
 from sentence_transformers import SentenceTransformer
 
-class EmbeddingModel:
-    
-    def __init__(self):
-        self.model = SentenceTransformer(
-            "BAAI/bge-base-en-v1.5"
-        )
+from app import config
 
-    def generate_embeddings(self, texts):
-        embeddings = self.model.encode(
-            texts,
-            normalize_embeddings=True
-        )
-        return embeddings.tolist()
+# BGE models expect this instruction on queries (not on passages).
+QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: "
+
+
+class EmbeddingModel:
+    def __init__(self):
+        self.model = SentenceTransformer(config.EMBED_MODEL)
+        self.dim = self.model.get_sentence_embedding_dimension()
+
+    def embed_documents(self, texts):
+        return self.model.encode(
+            texts, normalize_embeddings=True, batch_size=64, show_progress_bar=len(texts) > 500
+        ).tolist()
+
+    def embed_query(self, query):
+        prefix = QUERY_INSTRUCTION if "bge" in config.EMBED_MODEL.lower() else ""
+        return self.model.encode(prefix + query, normalize_embeddings=True).tolist()

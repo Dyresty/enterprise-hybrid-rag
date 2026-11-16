@@ -1,39 +1,17 @@
-import os
 from openai import OpenAI
-from dotenv import load_dotenv
 
-load_dotenv()
+from app import config
+
+
 class LLMService:
+    """OpenAI-compatible client. Pointing LLM_BASE_URL at vLLM or Ollama runs the same code fully on-prem."""
 
     def __init__(self):
+        self.client = OpenAI(base_url=config.LLM_BASE_URL, api_key=config.LLM_API_KEY)
+        self.model = config.LLM_MODEL
 
-        self.client = OpenAI(
-            api_key=os.getenv(
-                "OPENAI_API_KEY"
-            )
+    def chat(self, messages, temperature=0.1):
+        response = self.client.chat.completions.create(
+            model=self.model, messages=messages, temperature=temperature
         )
-    def generate(
-        self,
-        prompt
-    ):
-        response = (
-            self.client.chat.completions.create(
-                
-                model="gpt-4.1-mini",
-
-                messages=[
-                    {
-                        "role":"user",
-                        "content":prompt
-                    }
-                ],
-
-                temperature=0.2
-            )
-        )
-        return (
-            response
-            .choices[0]
-            .message
-            .content
-        )
+        return response.choices[0].message.content

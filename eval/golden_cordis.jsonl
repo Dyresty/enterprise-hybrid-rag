@@ -1,0 +1,42 @@
+{"question": "Which project makes machine learning over knowledge graphs understandable to humans?", "relevant": ["101070305"], "type": "semantic"}
+{"question": "ERC grant on program analysers that adjust their own precision automatically", "relevant": ["101141647"], "type": "semantic"}
+{"question": "Doctoral network on machine learning that combines several different ways of representing the same data", "relevant": ["101073307"], "type": "semantic"}
+{"question": "AI support for emergency response decisions over huge real-time data streams", "relevant": ["101092749"], "type": "semantic"}
+{"question": "Storing digital information inside synthetic molecules", "relevant": ["101115317"], "type": "semantic"}
+{"question": "Additive manufacturing of components that combine several materials in one part", "relevant": ["101091911"], "type": "semantic"}
+{"question": "How charges move across electrode interfaces in batteries while they are operating", "relevant": ["101104032"], "type": "semantic"}
+{"question": "European partnership building communication networks secured by quantum key distribution", "relevant": ["101114043"], "type": "semantic"}
+{"question": "Dismantling old ships in a way that is safe for workers and the environment", "relevant": ["101136056"], "type": "semantic"}
+{"question": "Terahertz wireless links for the next generation of mobile networks", "relevant": ["101131501"], "type": "semantic"}
+{"question": "Cultural and political history of refrigeration technology", "relevant": ["101118625"], "type": "semantic"}
+{"question": "Using digital tools to strengthen citizen participation in democracy", "relevant": ["101178306"], "type": "semantic"}
+{"question": "Data-driven and physics-based product development for a circular economy", "relevant": ["101177586"], "type": "semantic"}
+{"question": "Tools for assessing and certifying the security of ICT products", "relevant": ["101225878"], "type": "semantic"}
+{"question": "Making multi-omics data from fermentation research findable and linking it into knowledge graphs", "relevant": ["101120449"], "type": "semantic"}
+{"question": "Spin lasers for very fast and energy-efficient satellite and terrestrial data links", "relevant": ["101184694"], "type": "semantic"}
+{"question": "Research on combining formal education programmes with learning at the workplace", "relevant": ["101079237"], "type": "semantic"}
+{"question": "Bayesian deep learning that works when scientists only have small datasets", "relevant": ["101299841"], "type": "semantic"}
+{"question": "Mobile robots that inspect and maintain industrial facilities", "relevant": ["101072634"], "type": "semantic"}
+{"question": "Humans and AI systems making high-stakes decisions together", "relevant": ["101120763"], "type": "semantic"}
+{"question": "Detecting hospital infection outbreaks with mass spectrometry and AI", "relevant": ["101278403"], "type": "semantic"}
+{"question": "Treating the processing of 3D shapes as a probabilistic inference problem", "relevant": ["101055448"], "type": "semantic"}
+{"question": "Reducing the number of animals used in toxicology studies with virtual control groups", "relevant": ["101172693"], "type": "semantic"}
+{"question": "Training network on error-correcting codes and their applications", "relevant": ["101072316"], "type": "semantic"}
+{"question": "Energy-aware collaborative swarms of low-power wireless devices", "relevant": ["101093046"], "type": "semantic"}
+{"question": "Data platform supporting local energy communities", "relevant": ["101069694"], "type": "semantic"}
+{"question": "Predicting the risk of sand fly-borne diseases from climate data", "relevant": ["101057690"], "type": "semantic"}
+{"question": "Model-based design and testing of onboard computing systems for satellites", "relevant": ["101082622"], "type": "semantic"}
+{"question": "Photonic circuits that quickly restore quantum entanglement", "relevant": ["101106271"], "type": "semantic"}
+{"question": "What is the objective of LiNQs?", "relevant": ["101042672"], "type": "lexical"}
+{"question": "Who coordinates grant 101120449?", "relevant": ["101120449"], "type": "lexical"}
+{"question": "What is SPEAR about?", "relevant": ["101119774"], "type": "lexical"}
+{"question": "What does QuESADILLA develop?", "relevant": ["101042399"], "type": "lexical"}
+{"question": "Tell me about MIRAQLS", "relevant": ["101070700"], "type": "lexical"}
+{"question": "Which project has grant number 101248573?", "relevant": ["101248573"], "type": "lexical"}
+{"question": "How much EU funding did the Paderborn project on explainable learning on knowledge graphs receive?", "relevant": ["101070305"], "type": "metadata"}
+{"question": "When does the MicrocombSys doctoral network start and end?", "relevant": ["101119968"], "type": "metadata"}
+{"question": "What is the recipe for Bavarian pretzels?", "relevant": [], "type": "out_of_scope"}
+{"question": "What was Volkswagen's revenue in 2024?", "relevant": [], "type": "out_of_scope"}
+{"question": "Who won the 2022 FIFA World Cup?", "relevant": [], "type": "out_of_scope"}
+{"question": "What is the semester fee at Paderborn University?", "relevant": [], "type": "out_of_scope"}
+{"question": "Which bus line goes from Paderborn station to the campus?", "relevant": [], "type": "out_of_scope"}

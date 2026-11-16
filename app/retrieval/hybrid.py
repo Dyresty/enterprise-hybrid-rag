@@ -1,99 +1,27 @@
-class HybridRetriever:
+RRF_K = 60
 
-    def __init__(
-        self,
-        dense_retriever,
-        bm25_retriever
-    ):
+
+def reciprocal_rank_fusion(result_lists, k=RRF_K):
+    """Fuse ranked lists by rank, not score: score(d) = sum over lists of 1 / (k + rank).
+
+    Rank-based fusion needs no normalisation between cosine similarity and BM25 scores,
+    which live on completely different scales.
+    """
+    fused = {}
+    for results in result_lists:
+        for rank, doc in enumerate(results, start=1):
+            key = (doc["document_id"], doc["chunk_id"])
+            entry = fused.setdefault(key, {**doc, "rrf_score": 0.0})
+            entry["rrf_score"] += 1.0 / (k + rank)
+    return sorted(fused.values(), key=lambda d: d["rrf_score"], reverse=True)
+
+
+class HybridRetriever:
+    def __init__(self, dense_retriever, bm25_retriever):
         self.dense = dense_retriever
         self.bm25 = bm25_retriever
 
-    def min_max_normalize(results):
-
-        scores = [
-            r["score"]
-            for r in results
-        ]
-
-        min_score=min(scores)
-        max_score=max(scores)
-
-        for r in results:
-            r["normalized_score"] = (
-                (r["score"]-min_score)
-                /
-                (max_score-min_score+1e-8)
-            )
-
-        return results
-    
-    def search(
-        self,
-        query,
-        top_k=20
-    ):
-
-        dense_results = self.dense.search(
-            query,
-            top_k
-        )
-
-        sparse_results = self.bm25.search(
-            query,
-            top_k
-        )
-
-        combined = {}
-
-
-        # Dense results
-        for rank, item in enumerate(dense_results):
-
-            key = (
-                item["document_id"],
-                item["chunk_id"]
-            )
-
-            combined[key] = {
-                "document": item,
-                "rrf_score": 0
-            }
-
-            combined[key]["rrf_score"] += (
-                1 / (60 + rank + 1)
-            )
-
-
-        # BM25 results
-        for rank, item in enumerate(sparse_results):
-
-            key = (
-                item["document_id"],
-                item["chunk_id"]
-            )
-
-            if key not in combined:
-                combined[key] = {
-                    "document": item,
-                    "rrf_score": 0
-                }
-
-            combined[key]["rrf_score"] += (
-                1 / (60 + rank + 1)
-            )
-
-
-        results = sorted(
-            combined.values(),
-            key=lambda x: x["rrf_score"],
-            reverse=True
-        )
-
-
-        return [
-            {
-                **r["document"],
-                "hybrid_score": r["rrf_score"]
-            }
-            for r in results[:top_k]
-        ]
+    def search(self, query, top_k=20):
+        dense = self.dense.search(query, top_k)
+        sparse = self.bm25.search(query, top_k)
+        return reciprocal_rank_fusion([dense, sparse])[:top_k]

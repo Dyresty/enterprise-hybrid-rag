@@ -5,7 +5,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from app.models.document import ChunkMetadata, DocumentChunk
 
-SEPARATORS = ["\n\n", "\n", ". ", " ", ""]
+# Markdown headings first, so chunks follow the document's sections (parser keeps the structure).
+SEPARATORS = ["\n# ", "\n## ", "\n### ", "\n\n", "\n", ". ", " ", ""]
 
 # Parent-child chunking: small children give precise retrieval,
 # their larger parent gives the LLM enough surrounding context.

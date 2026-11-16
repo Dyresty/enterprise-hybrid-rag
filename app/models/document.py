@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Literal, Optional
 
 from pydantic import BaseModel
 
@@ -31,12 +31,23 @@ class Source(BaseModel):
     document_id: str
     filename: str
     page: int
+    chunk_id: int
+    excerpt: str
     title: Optional[str] = None
     url: Optional[str] = None
     score: float
 
 
 class ChatResponse(BaseModel):
+    answer_id: str
     question: str
     answer: str
     sources: list[Source]
+    needs_review: bool = False
+    review_reasons: list[str] = []
+
+
+class FeedbackRequest(BaseModel):
+    answer_id: str
+    rating: Literal["up", "down"]
+    comment: Optional[str] = None

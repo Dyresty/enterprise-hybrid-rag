@@ -28,6 +28,9 @@ The demo corpus is **1,479 EU Horizon Europe research projects from CORDIS**: ev
 | **Grounding prompt + refusal** | Answer only from the sources, cite `[n]` for every claim, and use a fixed refusal sentence. Chunks below a reranker score of 0.01 are dropped before the LLM is called. |
 | **OpenAI-compatible LLM client** | Set `LLM_BASE_URL` to switch to vLLM or Ollama. No code change, and no data leaves the network (GDPR). |
 | **Embedded Qdrant by default** | Runs with no server. Set `QDRANT_URL` to use the docker-compose Qdrant server. |
+| **Structure-preserving parsing + OCR** | PDFs are converted page by page to Markdown with `pymupdf4llm`, so headings, lists and tables survive and the chunker splits at section headings first. Pages without a text layer (scans) fall back to EasyOCR (English and German). |
+| **Chunk-level attribution** | Every source in an answer carries document, page, chunk ID and the matching excerpt, so each claim can be checked at the exact passage. |
+| **Automatic answer validation + human review** | Each answer is checked: does it cite sources, does it cite only sources it was given, was retrieval confident, was it a refusal. Failing answers get `needs_review` with reasons. Users rate answers via `/feedback`. Flagged and down-rated answers form a review queue (`/review`) that a curator works through. Reviewed cases become new evaluation questions or training examples. |
 
 ## Evaluation
 
@@ -77,10 +80,12 @@ The single citation "miss" is a labelling issue, not a system error. *"AI suppor
 - Qdrant payload filters on extracted fields (participant, programme, year)
 - a knowledge graph of projects, organisations and topics, queried with SPARQL or GraphRAG and routed to by query type
 
-Limitations: 37 questions is small (one question = 2.7 points), and almost every question has a single relevant document, so P@5 tops out at 0.2. Next steps:
-- a larger set, with multi-document questions
-- German-language queries (switch to `bge-m3`)
-- an LLM-judge faithfulness run on the full set
+**Known weakness: rare acronyms in the reranker.** *"Who coordinates ENEXA?"* — dense retrieval and BM25 both rank the four ENEXA chunks first. But the cross-encoder doesn't know the acronym and scores them at 0.002, below the 0.01 threshold, so a different project is answered. The answer validation caught this (`low retrieval confidence`) and put it in the review queue. Planned fix: fuse the reranker's ranking with the retrieval ranking (RRF over both) instead of letting the reranker decide alone, and never drop a chunk that both retrievers rank in their top 3. The fix needs a new benchmark run, so the results above are for the current pipeline.
+
+Limitations and next steps:
+- 37 questions is small (one question = 2.7 points), and almost every question has a single relevant document, so P@5 tops out at 0.2. Next: a larger set with multi-document questions.
+- German-language queries: switch to `bge-m3`.
+- The benchmark also has an answer-relevance judge (does the answer address the question?). It was added after the runs above.
 
 ## Fine-tuning a local model (QLoRA)
 
@@ -163,22 +168,27 @@ python -m pytest                                       # unit tests, no models n
 
 | Endpoint | |
 |---|---|
-| `POST /chat` `{"question": "...", "top_k": 5}` | Answer with `[n]` citations plus a source list (title, CORDIS URL, score) |
+| `POST /chat` `{"question": "...", "top_k": 5}` | Answer with `[n]` citations, sources (document, page, chunk ID, excerpt, CORDIS URL, score), `answer_id`, `needs_review` and `review_reasons` |
 | `GET /search?q=...` | Retrieval only, no LLM: shows exactly what the model would see |
-| `POST /upload` | Ingest a PDF (parsed, chunked, embedded, BM25 refreshed) |
+| `POST /upload` | Ingest a PDF (Markdown structure, OCR for scanned pages, chunked, embedded, BM25 refreshed) |
+| `POST /feedback` `{"answer_id": "...", "rating": "up"\|"down", "comment": "..."}` | User rating of an answer |
+| `GET /review` | Review queue: answers flagged by validation or rated down, with reasons |
 | `GET /health` | Status and chunk count |
 
 ## Project layout
 
 ```
 app/
-  ingestion/   parser.py (PDF), chunker.py (parent-child)
+  ingestion/   parser.py (PDF -> Markdown pages), ocr.py (EasyOCR fallback), chunker.py (parent-child)
   embeddings/  bge with query instruction
   retrieval/   retriever.py (dense), bm25.py, hybrid.py (RRF), reranker.py
-  services/    rag_service.py, context_builder.py, ingestion_service.py, container.py (wiring)
+  services/    rag_service.py, context_builder.py, ingestion_service.py, container.py (wiring),
+               answer_checks.py (validation), feedback_store.py (feedback + review queue)
+  api/         chat.py, upload.py, feedback.py
   llm/         prompt_builder.py (system prompt), llm_service.py (OpenAI-compatible)
   evaluation/  retrieval_metrics.py, benchmark.py
 scripts/ingest_cordis.py
-eval/        golden_cordis.jsonl, results.md
-tests/       test_core.py
+finetune/    build_dataset.py, train_qlora.py, serve.py, Modelfile
+eval/        golden_cordis.jsonl, results*.md
+tests/       test_core.py, test_quality.py
 ```

@@ -30,6 +30,20 @@ Sources:
 Answer:
 {answer}"""
 
+RELEVANCE_PROMPT = """You check whether an answer addresses the question that was asked.
+Ignore whether the facts are correct; judge only if the answer responds to what was asked.
+Reply with one word: RELEVANT or IRRELEVANT.
+
+Question:
+{question}
+
+Answer:
+{answer}"""
+
+
+def judge_says(verdict, positive):
+    return float(verdict.strip().upper().startswith(positive))
+
 
 def strategies(c):
     n = config.CANDIDATES
@@ -72,7 +86,7 @@ def judge_llm():
 def evaluate_generation(c, questions):
     answerable = [q for q in questions if q["relevant"]]
     unanswerable = [q for q in questions if not q["relevant"]]
-    cited, correct_source, supported, refused, latency = [], [], [], [], []
+    cited, correct_source, supported, relevant, refused, latency = [], [], [], [], [], []
     judge = judge_llm()
 
     for q in answerable:
@@ -86,7 +100,9 @@ def evaluate_generation(c, questions):
         correct_source.append(float(bool(cited_ids & set(q["relevant"]))))
         context, _ = c.rag.context_builder.build(documents)
         verdict = judge([{"role": "user", "content": JUDGE_PROMPT.format(context=context, answer=result["answer"])}])
-        supported.append(float(verdict.strip().upper().startswith("SUPPORTED")))
+        supported.append(judge_says(verdict, "SUPPORTED"))
+        verdict = judge([{"role": "user", "content": RELEVANCE_PROMPT.format(question=q["question"], answer=result["answer"])}])
+        relevant.append(judge_says(verdict, "RELEVANT"))
 
     for q in unanswerable:
         refused.append(float(NOT_FOUND.lower() in c.rag.generate_answer(q["question"])["answer"].lower()))
@@ -95,6 +111,7 @@ def evaluate_generation(c, questions):
         "Answers with citations": statistics.mean(cited),
         "Cites a relevant document": statistics.mean(correct_source),
         "Faithful (LLM judge)": statistics.mean(supported),
+        "Answer relevance (LLM judge)": statistics.mean(relevant),
         "Out-of-scope refused": statistics.mean(refused) if refused else float("nan"),
         "Median answer latency (s)": statistics.median(latency),
     }
@@ -116,6 +133,7 @@ def main():
 
     questions = [json.loads(line) for line in Path(args.golden).read_text(encoding="utf-8").splitlines() if line.strip()]
     c = get_container()
+    c.rag.feedback_store = None  # benchmark answers should not land in the user feedback log
 
     answerable = [q for q in questions if q["relevant"]]
     report = [f"## Retrieval ({len(answerable)} questions, document level)\n", to_markdown(evaluate_retrieval(c, answerable))]

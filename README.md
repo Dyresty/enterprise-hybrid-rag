@@ -106,30 +106,43 @@ Result: 337 examples (303 train, 34 validation). Generated questions are cached 
 
 > Long sequences × Qwen's 152k-token vocabulary make the output logits the main memory cost (about 2.3 GB in fp32 for one 3.8k-token sequence). Before the length filter and an eval batch size of 1, training spilled past 12 GB into shared system memory and slowed down about 10×, without an out-of-memory error.
 
-**Serving and evaluation.** The adapter is merged into the base weights. `finetune/serve.py` exposes the model behind an OpenAI-compatible endpoint, so the RAG switches to it with `LLM_BASE_URL` alone. Base and fine-tuned models are served the same way: bf16, same chat template, greedy decoding. The judge stays fixed at gpt-4.1-mini.
+**Serving.** The adapter is merged into the base weights. Two serving paths, both OpenAI-compatible, so the RAG switches with `LLM_BASE_URL` alone:
+- **Ollama:** convert to GGUF q8_0 with llama.cpp's `convert_hf_to_gguf.py`, then `ollama create` with Qwen's chat template (`finetune/Modelfile`). The installed Ollama imports safetensors only through its MLX engine, which doesn't support Qwen2, so the conversion goes through GGUF.
+- **`finetune/serve.py`:** a small transformers server in bf16, with no extra tooling.
 
-| Metric | Base Qwen2.5-3B | QLoRA fine-tuned | gpt-4.1-mini |
-|---|---|---|---|
-| Answers with `[n]` citations | 0.730 | **0.784** | 1.000 |
-| Cites a relevant document | 0.703 | **0.757** | 0.973 |
-| Faithful (LLM judge) | 1.000 | 1.000 | 1.000 |
-| Out-of-scope refused | 1.000 | 1.000 | 1.000 |
-| Median latency | 4.9 s | 7.4 s | API |
+Base and fine-tuned models are always served the same way. The judge stays fixed at gpt-4.1-mini.
+
+| Metric | Base 3B (Ollama q8_0) | **Fine-tuned (Ollama q8_0)** | Base 3B (transformers bf16) | Fine-tuned (transformers bf16) | gpt-4.1-mini |
+|---|---|---|---|---|---|
+| Answers with `[n]` citations | 0.757 | **0.892** | 0.730 | 0.784 | 1.000 |
+| Cites a relevant document | 0.730 | **0.865** | 0.703 | 0.757 | 0.973 |
+| Faithful (LLM judge) | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
+| Out-of-scope refused | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
+| Median latency | 1.4 s | 1.7 s | 4.9 s | 7.4 s | API |
 
 How to read this:
-- The citation rate improves by 5.4 points. That is 2 of 37 questions: the right direction, but within noise for this set size.
+- In both runtimes the fine-tuned model cites more often and cites the right project more often: +13.5 points in Ollama (5 of 37 questions), +5.4 points with transformers (2 of 37).
+- The gain is consistent in direction. Its size varies between runs, as expected with 37 questions.
 - Faithfulness and refusals were already perfect for both models.
-- A 3B model with 261 examples and 1 epoch is a proof of concept. It closes only a small part of the gap to gpt-4.1-mini.
+- llama.cpp in Ollama is about 4× faster than the plain transformers server.
+- A 3B model with 261 examples and 1 epoch is a proof of concept. It still trails gpt-4.1-mini.
 
 Next steps:
 - more data and epochs
 - DPO on cited vs uncited answers
 - a 7B model on a cluster GPU
-- GGUF conversion with llama.cpp for Ollama (the installed Ollama imports safetensors only through its MLX engine, which doesn't support Qwen2)
+- a larger evaluation set to measure small differences reliably
 
 ```bash
 python -m finetune.build_dataset --projects 150 --off-topic 40
 python -m finetune.train_qlora
+
+# Ollama (llama.cpp checked out next to this repo)
+python ../tools/llama.cpp/convert_hf_to_gguf.py finetune/out/merged --outtype q8_0 --outfile finetune/out/gguf/merged-q8_0.gguf
+cd finetune && ollama create cordis-qwen -f Modelfile && cd ..
+LLM_BASE_URL=http://localhost:11434/v1 LLM_MODEL=cordis-qwen python -m app.evaluation.benchmark --generation --out eval/results_cordis_qwen_ollama.md
+
+# or without Ollama
 python -m finetune.serve --model finetune/out/merged --name cordis-qwen --port 8100
 LLM_BASE_URL=http://127.0.0.1:8100/v1 LLM_MODEL=cordis-qwen python -m app.evaluation.benchmark --generation --out eval/results_cordis_qwen.md
 ```
